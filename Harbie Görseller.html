@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Harbie — Yeniden Üretilen Görseller</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;0,6..12,800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --cream:#FAF3E9; --cream-2:#F3E8D8; --paper:#FFFCF7;
+    --ink:#3A2B25; --ink-soft:#6E5B51; --muted:#9C8a7c;
+    --red:#C9342B; --wood-deep:#A6794B;
+    --line:rgba(58,43,37,0.10); --line-2:rgba(58,43,37,0.16);
+    --shadow-sm:0 4px 14px -8px rgba(120,80,50,0.40);
+    --shadow:0 20px 44px -24px rgba(120,80,50,0.42);
+    --r:16px; --r-lg:22px;
+    --disp:"Newsreader",Georgia,serif; --body:"Nunito Sans",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:var(--body);color:var(--ink);background:var(--cream);line-height:1.62;font-size:17px;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 32px;}
+  h1,h2,h3{font-family:var(--disp);font-weight:500;line-height:1.1;margin:0;letter-spacing:-0.01em;}
+
+  /* header */
+  header.top{padding:74px 0 30px;text-align:center;}
+  .eyebrow{font-family:var(--body);font-weight:800;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--red);display:inline-flex;align-items:center;gap:10px;}
+  .eyebrow::before,.eyebrow::after{content:"";width:26px;height:2px;background:var(--red);border-radius:2px;}
+  header.top h1{font-size:clamp(2.4rem,5vw,3.8rem);margin:18px 0 0;}
+  header.top .sub{max-width:40em;margin:18px auto 0;color:var(--ink-soft);font-size:clamp(1.02rem,1.4vw,1.18rem);}
+  .legend{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:26px;}
+  .legend span{background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:7px 15px;font-size:13px;font-weight:700;color:var(--ink-soft);}
+  .legend b{color:var(--red);}
+
+  /* section */
+  section{padding:46px 0 8px;}
+  .sec-head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:26px;}
+  .sec-head h2{font-size:clamp(1.5rem,2.6vw,2.1rem);}
+  .sec-head .count{font-size:13px;font-weight:800;letter-spacing:.04em;color:var(--muted);text-transform:uppercase;}
+  .sec-head p{margin:0;color:var(--ink-soft);font-size:15px;flex:1 1 240px;min-width:200px;}
+
+  .grid{display:grid;gap:26px;}
+  .g4{grid-template-columns:repeat(4,1fr);}
+  .g2{grid-template-columns:repeat(2,1fr);}
+  .g1{grid-template-columns:1fr;}
+
+  figure{margin:0;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-sm);transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s;display:flex;flex-direction:column;}
+  figure:hover{transform:translateY(-6px);box-shadow:var(--shadow);}
+  .ph{position:relative;overflow:hidden;background:var(--cream-2);cursor:zoom-in;}
+  .ph img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.8,.2,1);}
+  figure:hover .ph img{transform:scale(1.04);}
+  .ratio-portrait .ph{aspect-ratio:4/5;}
+  .ratio-wide .ph{aspect-ratio:3/2;}
+  .ratio-hero .ph{aspect-ratio:16/9;}
+  .badge{position:absolute;top:13px;left:13px;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(6px);font-weight:800;font-size:11.5px;letter-spacing:.04em;color:var(--ink);padding:6px 12px;border-radius:999px;}
+  figcaption{padding:18px 20px 20px;}
+  figcaption h3{font-size:1.2rem;}
+  figcaption p{margin:6px 0 0;font-size:14px;color:var(--ink-soft);}
+  .file{margin-top:10px;font-family:ui-monospace,Menlo,monospace;font-size:11.5px;color:var(--muted);}
+
+  footer{padding:60px 0 80px;text-align:center;color:var(--muted);font-size:14px;}
+  footer .it{font-family:var(--disp);font-style:italic;color:var(--red);font-size:1.1rem;}
+
+  /* lightbox */
+  .lb{position:fixed;inset:0;z-index:100;background:rgba(30,20,16,.86);display:none;align-items:center;justify-content:center;padding:30px;cursor:zoom-out;backdrop-filter:blur(4px);}
+  .lb.open{display:flex;}
+  .lb img{max-width:94vw;max-height:90vh;border-radius:12px;box-shadow:0 30px 80px -20px rgba(0,0,0,.6);}
+
+  @media(max-width:980px){ .g4{grid-template-columns:repeat(2,1fr);} }
+  @media(max-width:620px){ .wrap{padding:0 20px;} .g4,.g2{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <span class="eyebrow">MAGNİFİC · NANO BANANA PR</span>
+    <h1>Yeniden Üretilen Harbie Görselleri</h1>
+    <p class="sub">Mevcut amigurumi bebeklerin ve Nazlı Demirel'in karakter tutarlılığı korunarak, referans görsellerden üretilen 12 yeni görsel. Her karakter; örgü dokusu, düğme gözleri, işlemeli gülümsemesi ve kostümüyle birebir korundu.</p>
+    <div class="legend">
+      <span><b>4</b>&nbsp;Karakter portresi</span>
+      <span><b>4</b>&nbsp;Amigurumi dünyası</span>
+      <span><b>2</b>&nbsp;Yaşam tarzı</span>
+      <span><b>1</b>&nbsp;Marka yüzü</span>
+      <span><b>1</b>&nbsp;Hero / kapak</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- PORTRELER -->
+  <section>
+    <div class="sec-head">
+      <h2>Karakter Portreleri</h2><span class="count">Temiz arka plan · 4:5</span>
+      <p>Her bebek, kendi referans fotoğrafından; stüdyo ışığı ve premium ürün çekimi diliyle yeniden üretildi.</p>
+    </div>
+    <div class="grid g4">
+      <figure class="ratio-portrait"><div class="ph"><span class="badge">Mühendis</span><img src="assets/gen/muhendis-portre.png" alt="Harbie Mühendis portre"/></div><figcaption><h3>Harbie Mühendis</h3><p>Beyaz baret, mavi tulum, sarı askılar.</p><div class="file">muhendis-portre.png</div></figcaption></figure>
+      <figure class="ratio-portrait"><div class="ph"><span class="badge">Futbolcu</span><img src="assets/gen/futbolcu-portre.png" alt="Harbie Futbolcu portre"/></div><figcaption><h3>Harbie Futbolcu</h3><p>Mavi forma, bandana, örgü top.</p><div class="file">futbolcu-portre.png</div></figcaption></figure>
+      <figure class="ratio-portrait"><div class="ph"><span class="badge">Berber</span><img src="assets/gen/berber-portre.png" alt="Harbie Berber portre"/></div><figcaption><h3>Harbie Berber</h3><p>Krem önlük, makas-tarak, kırmızı bandana.</p><div class="file">berber-portre.png</div></figcaption></figure>
+      <figure class="ratio-portrait"><div class="ph"><span class="badge">İtfaiyeci</span><img src="assets/gen/itfaiyeci-portre.png" alt="Harbie İtfaiyeci portre"/></div><figcaption><h3>Harbie İtfaiyeci</h3><p>Kırmızı üniforma, sarı şeritler, hortum.</p><div class="file">itfaiyeci-portre.png</div></figcaption></figure>
+    </div>
+  </section>
+
+  <!-- DIORAMA -->
+  <section>
+    <div class="sec-head">
+      <h2>Amigurumi Dünyası</h2><span class="count">Diorama · 3:2</span>
+      <p>Brief'teki "iplik ve amigurumi cumhuriyeti" fikri: her Harbie, tamamen örgü minyatür sahnesinde — inşaat, saha, kuaför, itfaiye.</p>
+    </div>
+    <div class="grid g2">
+      <figure class="ratio-wide"><div class="ph"><span class="badge">İnşaat Sahası</span><img src="assets/gen/muhendis-diorama.png" alt="Mühendis amigurumi inşaat sahası"/></div><figcaption><h3>Mühendis · İnşaat Dünyası</h3><p>Örgü vinç, tuğlalar, trafik konileri.</p><div class="file">muhendis-diorama.png</div></figcaption></figure>
+      <figure class="ratio-wide"><div class="ph"><span class="badge">Stadyum</span><img src="assets/gen/futbolcu-diorama.png" alt="Futbolcu amigurumi stadyum"/></div><figcaption><h3>Futbolcu · Saha Dünyası</h3><p>Örgü tribün kalabalığı, kale, yeşil saha.</p><div class="file">futbolcu-diorama.png</div></figcaption></figure>
+      <figure class="ratio-wide"><div class="ph"><span class="badge">Kuaför</span><img src="assets/gen/berber-diorama.png" alt="Berber amigurumi kuaför"/></div><figcaption><h3>Berber · Salon Dünyası</h3><p>Örgü berber koltuğu, ayna, şişeler.</p><div class="file">berber-diorama.png</div></figcaption></figure>
+      <figure class="ratio-wide"><div class="ph"><span class="badge">İtfaiye</span><img src="assets/gen/itfaiyeci-diorama.png" alt="İtfaiyeci amigurumi itfaiye"/></div><figcaption><h3>İtfaiyeci · Kurtarma Dünyası</h3><p>Örgü itfaiye aracı, merdiven, keçe alev.</p><div class="file">itfaiyeci-diorama.png</div></figcaption></figure>
+    </div>
+  </section>
+
+  <!-- LIFESTYLE -->
+  <section>
+    <div class="sec-head">
+      <h2>Yaşam Tarzı</h2><span class="count">Çocuk + Harbie</span>
+      <p>Sıcak, gerçek ev ortamında çocukların Harbie'lerle bağ kurduğu anlar.</p>
+    </div>
+    <div class="grid g2">
+      <figure class="ratio-portrait"><div class="ph"><span class="badge">Kucaklama</span><img src="assets/gen/lifestyle-kucak.png" alt="Çocuk dört Harbie'yi kucaklıyor"/></div><figcaption><h3>Dört yol arkadaşı, bir kucak</h3><p>Çocuk; mühendis, berber, itfaiyeci ve futbolcu bebekleri kucaklıyor.</p><div class="file">lifestyle-kucak.png</div></figcaption></figure>
+      <figure class="ratio-wide"><div class="ph"><span class="badge">Oyun</span><img src="assets/gen/lifestyle-mac.png" alt="İki kız futbolcu Harbie ile oynuyor"/></div><figcaption><h3>Maç keyfi</h3><p>İki çocuk, futbolcu Harbie ve örgü topla oyun kuruyor.</p><div class="file">lifestyle-mac.png</div></figcaption></figure>
+    </div>
+  </section>
+
+  <!-- NAZLI -->
+  <section>
+    <div class="sec-head">
+      <h2>Marka Yüzü</h2><span class="count">Nazlı Demirel · 4:5</span>
+      <p>Mevcut fotoğraftaki yüz kimliği korunarak üretilen yeni kurumsal sahne.</p>
+    </div>
+    <div class="grid g2">
+      <figure class="ratio-portrait"><div class="ph"><span class="badge">Kurumsal</span><img src="assets/gen/nazli-yeni.png" alt="Nazlı Demirel Harbie bebekleriyle"/></div><figcaption><h3>Nazlı Demirel</h3><p>Aydınlık, modern ortamda iki Harbie'yi sunuyor — aynı yüz, yeni poz.</p><div class="file">nazli-yeni.png</div></figcaption></figure>
+      <figure class="ratio-portrait" style="background:var(--cream-2);border-style:dashed;"><div class="ph" style="aspect-ratio:4/5;background:transparent;cursor:default;display:grid;place-items:center;padding:24px;"><img src="assets/nazli.png" alt="Orijinal referans" style="object-fit:contain;"/></div><figcaption><h3>Referans (orijinal)</h3><p>Karakter tutarlılığı için kullanılan kaynak fotoğraf.</p><div class="file">nazli.png</div></figcaption></figure>
+    </div>
+  </section>
+
+  <!-- HERO -->
+  <section>
+    <div class="sec-head">
+      <h2>Hero / Kapak</h2><span class="count">16:9 · sol boşluk</span>
+      <p>Ana sayfa için; sol tarafta başlık metnine yer bırakan grup kompozisyonu.</p>
+    </div>
+    <div class="grid g1">
+      <figure class="ratio-hero"><div class="ph"><span class="badge">Hero</span><img src="assets/gen/hero.png" alt="Dört Harbie amigurumi dünyasında"/></div><figcaption><h3>Geleceğin Eşitlik Elçileri</h3><p>Dört karakter, örgü minyatür dünyada; başlık için temiz negatif alan.</p><div class="file">hero.png</div></figcaption></figure>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>12 görsel · Nano Banana Pro ile referanslı üretim · karakter tutarlılığı korunarak</p>
+    <p class="it">Eşitlik oyunla başlar.</p>
+  </div>
+</footer>
+
+<div class="lb" id="lb"><img src="" alt="" /></div>
+<script>
+(function(){
+  var lb=document.getElementById('lb'), lbImg=lb.querySelector('img');
+  document.querySelectorAll('.ph').forEach(function(p){
+    if(p.style.cursor==='default') return;
+    p.addEventListener('click',function(){
+      var img=p.querySelector('img'); if(!img) return;
+      lbImg.src=img.src; lb.classList.add('open');
+    });
+  });
+  lb.addEventListener('click',function(){ lb.classList.remove('open'); lbImg.src=''; });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ lb.classList.remove('open'); lbImg.src=''; }});
+})();
+</script>
+</body>
+</html>

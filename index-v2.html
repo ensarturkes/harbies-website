@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Harbie — Mesleklerin cinsiyeti yoktur</title>
+<meta name="description" content="Harbie; pamuklu içeriği ve el emeğiyle çocukların dünyasına eşitlik, cesaret ve dayanışma tohumları eken yol arkadaşıdır. Mesleklerin cinsiyeti yoktur." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;0,6..12,800;1,6..12,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="refresh.css" />
+</head>
+<body class="atelier" data-collection="scene">
+
+<!-- ===================== NAV ===================== -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index-v2.html" class="nav-logo" aria-label="Harbie"><img src="assets/logo.png" alt="Harbie" /></a>
+    <nav class="nav-links">
+      <a href="#koleksiyon">Koleksiyon</a>
+      <a href="#oyun-arkadasi">Oyun Arkadaşı</a>
+      <a href="#hikayemiz">Hikayemiz</a>
+      <a href="#degerler">Değerlerimiz</a>
+      <a href="#etki">Sosyal Etki</a>
+      <a href="b2b.html">Kurumsal</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="#etki" class="ses-chip" title="Sosyal Etki Sayacı">
+        <span class="heart" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.6-10-9.2C.4 8.3 2 4.8 5.3 4.8c2 0 3.3 1.1 4.2 2.3.9-1.2 2.2-2.3 4.2-2.3 3.3 0 4.9 3.5 3.3 7C19.5 16.4 12 21 12 21z"/></svg></span>
+        <span><b data-ses-mini>12.480</b> oyuncak</span>
+      </a>
+      <a href="https://shop.harbie.com" class="btn btn-primary btn-text">Mağaza</a>
+    </div>
+    <button class="nav-burger" aria-label="Menü" data-burger><span></span><span></span><span></span></button>
+  </div>
+</header>
+<nav class="mobile-menu" data-mobile-menu>
+  <a href="#koleksiyon">Koleksiyon</a>
+  <a href="#oyun-arkadasi">Oyun Arkadaşı</a>
+  <a href="#hikayemiz">Hikayemiz</a>
+  <a href="#degerler">Değerlerimiz</a>
+  <a href="#etki">Sosyal Etki</a>
+  <a href="b2b.html">Kurumsal</a>
+  <a href="https://shop.harbie.com" style="color:var(--red)">Mağaza →</a>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow hero-kicker">Sosyal Etki Oyuncağı · Hatay El Emeği</span>
+        <h1>Mesleklerin cinsiyeti yoktur.<span class="ital">Harbie ile hikayene başla…</span></h1>
+        <div class="hero-rotator" aria-hidden="true">
+          <span class="active">Çocukların potansiyelini özgürleştirir.</span>
+          <span>Geleceğin eşitlik elçisi.</span>
+          <span>Eşitlik oyunla başlar.</span>
+        </div>
+        <p class="hero-sub">El emeğiyle örülen, %100 pamuklu ve anti-alerjik bir yol arkadaşı. Her çocuğa “her işi başarabilirsin” diye fısıldar.</p>
+        <div class="hero-cta">
+          <a href="#koleksiyon" class="btn btn-primary btn-lg">Koleksiyonu Keşfet
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#hikayemiz" class="btn btn-ghost btn-lg">Hikayemiz</a>
+        </div>
+        <div class="pill-row" style="margin-top:30px;">
+          <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> %100 Pamuk</span>
+          <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Anti-alerjik</span>
+          <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Hatay kadın emeği</span>
+        </div>
+      </div>
+
+      <!-- karakter döngüsü -->
+      <div class="hero-figure">
+        <div class="blob"></div>
+        <span class="yarn-ball float-soft" style="--c:var(--yarn); width:72px; height:72px; top:-26px; right:-20px; z-index:5;"></span>
+        <div class="hero-cycle">
+          <div class="hero-dots" role="tablist" aria-label="Karakterler">
+            <button aria-label="Mühendis"></button>
+            <button aria-label="Futbolcu"></button>
+            <button aria-label="Berber"></button>
+            <button aria-label="İtfaiyeci"></button>
+          </div>
+          <div class="frames">
+            <div class="frame" data-role="Harbie Mühendis" data-motto="Geleceği inşa edecek güç senin içinde."><img src="assets/gen/muhendis-portre.png" alt="Harbie Mühendis" style="object-position:50% 0%" /></div>
+            <div class="frame" data-role="Harbie Futbolcu" data-motto="Saha da bizim, gelecek de bizim!"><img src="assets/gen/futbolcu-portre.png" alt="Harbie Futbolcu" style="object-position:50% 0%" /></div>
+            <div class="frame" data-role="Harbie Berber" data-motto="Yaratıcılığın ve emeğin cinsiyeti olmaz."><img src="assets/gen/berber-portre.png" alt="Harbie Berber" style="object-position:60% 0%" /></div>
+            <div class="frame" data-role="Harbie İtfaiyeci" data-motto="Cesaretle ve eşitlikle inşa ediyoruz."><img src="assets/gen/itfaiyeci-portre.png" alt="Harbie İtfaiyeci" style="object-position:45% 0%" /></div>
+          </div>
+          <div class="nameplate">
+            <div>
+              <small>Geleceğin eşitlik elçisi</small>
+              <span class="role">Harbie Mühendis</span>
+            </div>
+            <span class="italic-serif motto" style="color:#ffd9d2; font-size:1.02rem; max-width:42%; text-align:right; line-height:1.3;">Geleceği inşa edecek güç senin içinde.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== VALUES MARQUEE ===================== -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Mühendis<i class="dot"></i></span><span>İtfaiyeci<i class="dot"></i></span><span>Futbolcu<i class="dot"></i></span><span>Berber<i class="dot"></i></span><span>Eşitlik oyunla başlar<i class="dot"></i></span><span>Mesleklerin cinsiyeti yoktur<i class="dot"></i></span>
+    <span>Mühendis<i class="dot"></i></span><span>İtfaiyeci<i class="dot"></i></span><span>Futbolcu<i class="dot"></i></span><span>Berber<i class="dot"></i></span><span>Eşitlik oyunla başlar<i class="dot"></i></span><span>Mesleklerin cinsiyeti yoktur<i class="dot"></i></span>
+  </div>
+</div>
+
+<!-- ===================== INTRO ===================== -->
+<section class="section">
+  <div class="wrap">
+    <div class="head-block center reveal">
+      <span class="eyebrow center">Neden Harbie?</span>
+      <p class="h2" style="font-family:var(--font-display); margin-top:18px; line-height:1.22;">
+        Çocuklar dünyaya <span class="italic-serif" style="color:var(--red)">sınırsız bir potansiyelle</span> gelir. Biz bu potansiyeli özgürleştiriyor; onlara her zorluğu aşacak cesareti fısıldıyoruz.
+      </p>
+    </div>
+    <div class="reveal" style="max-width:760px; margin:34px auto 0; text-align:center;">
+      <p class="lead">Büyürken çocuklara toplumsal kalıplarla sınırlar öğretilir; hangi mesleklerin kime uygun olduğu söylenir. Biz bu sınırlara inanmıyoruz. Harbie; her işi başarabileceklerine dair sarsılmaz bir inanç aşılayan güçlü bir yol arkadaşıdır.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== KOLEKSİYON ===================== -->
+<section class="section" id="koleksiyon" style="background:var(--paper); border-block:1px solid var(--line);">
+  <div class="wrap">
+    <div class="head-block reveal">
+      <div class="sec-mark"><span class="thread draw-stitch"></span><span class="eyebrow">Amigurumi Cumhuriyeti</span></div>
+      <h2 class="h1">Geleceğin Eşitlik Elçileri ile Tanışın</h2>
+      <p class="lead">Her Harbie kendi dünyasının kahramanı. Çocuğunuza sadece bir oyuncak değil, bir karakter gelişimi yatırımı hediye edin. İşte ezber bozan ilk yol arkadaşları:</p>
+    </div>
+
+    <div class="scene-grid">
+      <!-- Mühendis -->
+      <article class="scene reveal" style="--accent:var(--eng)">
+        <div class="scene-window">
+          <img class="scene-photo" src="assets/gen/muhendis-diorama.png" alt="Harbie Mühendis amigurumi inşaat dünyası" />
+          <span class="scene-tag"><i></i> Mühendis</span>
+          <span class="scene-motto">“Geleceği inşa edecek güç senin içinde.”</span>
+        </div>
+        <div class="scene-body">
+          <h3>Harbie Mühendis</h3>
+          <p class="role-line">Beyaz bareti ve analitik dünyasıyla problem çözmeyi fısıldar.</p>
+          <div class="scene-foot">
+            <a href="urun-muhendis.html" class="link-arrow red">Hikayesini oku <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </article>
+      <!-- Futbolcu -->
+      <article class="scene reveal" style="--accent:var(--foot)">
+        <div class="scene-window">
+          <img class="scene-photo" src="assets/gen/futbolcu-diorama.png" alt="Harbie Futbolcu amigurumi saha dünyası" />
+          <span class="scene-tag"><i></i> Futbolcu</span>
+          <span class="scene-motto">“Saha da bizim, gelecek de bizim!”</span>
+        </div>
+        <div class="scene-body">
+          <h3>Harbie Futbolcu</h3>
+          <p class="role-line">18 numaralı forması ve takım ruhuyla yetenekleri öne çıkarır.</p>
+          <div class="scene-foot">
+            <a href="urun-muhendis.html" class="link-arrow red">Hikayesini oku <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </article>
+      <!-- Berber -->
+      <article class="scene reveal" style="--accent:var(--barb)">
+        <div class="scene-window">
+          <img class="scene-photo" src="assets/gen/berber-diorama.png" alt="Harbie Berber amigurumi kuaför dünyası" />
+          <span class="scene-tag"><i></i> Berber</span>
+          <span class="scene-motto">“Yaratıcılığın ve emeğin cinsiyeti olmaz.”</span>
+        </div>
+        <div class="scene-body">
+          <h3>Harbie Berber</h3>
+          <p class="role-line">Krem önlüğü ve el emeği aksesuarlarıyla estetiği eşitlikle harmanlar.</p>
+          <div class="scene-foot">
+            <a href="urun-muhendis.html" class="link-arrow red">Hikayesini oku <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </article>
+      <!-- İtfaiyeci -->
+      <article class="scene reveal" style="--accent:var(--fire)">
+        <div class="scene-window">
+          <img class="scene-photo" src="assets/gen/itfaiyeci-diorama.png" alt="Harbie İtfaiyeci amigurumi itfaiye dünyası" />
+          <span class="scene-tag"><i></i> İtfaiyeci</span>
+          <span class="scene-motto">“Cesaretle ve eşitlikle inşa ediyoruz.”</span>
+        </div>
+        <div class="scene-body">
+          <h3>Harbie İtfaiyeci</h3>
+          <p class="role-line">Üniforması ve aksesuarlarıyla “kahraman” algısını kalıplardan arındırır.</p>
+          <div class="scene-foot">
+            <a href="urun-muhendis.html" class="link-arrow red">Hikayesini oku <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== LIFESTYLE — OYUN ARKADAŞI ===================== -->
+<section class="section life" id="oyun-arkadasi">
+  <div class="wrap">
+    <div class="life-grid">
+      <div class="life-media reveal">
+        <span class="yarn-ball float-soft delay" style="--c:var(--pudra)"></span>
+        <div class="photo-frame">
+          <img src="assets/gen/lifestyle-kucak.png" alt="Harbie oyun arkadaşını kucaklayan çocuk" />
+        </div>
+        <div class="stamp">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-8.5C.8 9 2.3 5.5 5.5 5.5c1.9 0 3.2 1 3.9 2.2C10.3 6.5 11.6 5.5 13.5 5.5c3.2 0 4.7 3.5 3 7C16 16.65 12 21 12 21z"/></svg></span>
+          <div><b>Bir yol arkadaşı</b><small>oyuncaktan öte</small></div>
+        </div>
+      </div>
+      <div class="life-copy reveal">
+        <div class="sec-mark"><span class="thread draw-stitch"></span><span class="eyebrow">Oyun Arkadaşı</span></div>
+        <h2>Kucaklanan her Harbie, bir hayale cesaret verir</h2>
+        <p>Harbie bir rafta durmak için değil; kucaklanmak, maça götürülmek, geceleri sarılmak için var. Çocuklar onunla oynarken “her işi ben de yapabilirim” inancını fark etmeden içselleştirir. Her oyun, bir geleceği değiştirir.</p>
+        <div class="life-quotes">
+          <div class="life-quote">
+            <span class="av" style="background:var(--pink-soft);display:grid;place-items:center"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-8.5C.8 9 2.3 5.5 5.5 5.5c1.9 0 3.2 1 3.9 2.2C10.3 6.5 11.6 5.5 13.5 5.5c3.2 0 4.7 3.5 3 7C16 16.65 12 21 12 21z"/></svg></span>
+            <div>
+              <p>“Kızım futbolcu Harbie’yle uyuyor, ‘büyüyünce ben de gol atacağım’ diyor.”</p>
+              <div class="who">EBEVEYN · İstanbul</div>
+            </div>
+          </div>
+          <div class="life-quote">
+            <span class="av" style="background:var(--blue-soft);display:grid;place-items:center"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#3f7088" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-8.5C.8 9 2.3 5.5 5.5 5.5c1.9 0 3.2 1 3.9 2.2C10.3 6.5 11.6 5.5 13.5 5.5c3.2 0 4.7 3.5 3 7C16 16.65 12 21 12 21z"/></svg></span>
+            <div>
+              <p>“Oğlum berber Harbie’yle ‘saç tasarımı’ yapıyor — mesleklere bakışı değişti.”</p>
+              <div class="who">EBEVEYN · İzmir</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DEĞERLER ===================== -->
+<section class="section" id="degerler">
+  <div class="wrap">
+    <div class="head-block reveal">
+      <div class="sec-mark"><span class="thread draw-stitch"></span><span class="eyebrow">Manifestomuz</span></div>
+      <h2 class="h1">Değerlerimiz</h2>
+    </div>
+    <div class="val-grid">
+      <div class="val-card reveal">
+        <span class="val-ic" style="background:var(--blue-soft)"><svg viewBox="0 0 24 24" fill="none" stroke="#3f7088" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M4 8h16M6 8l-3 6a4 4 0 0 0 8 0L8 8M16 8l-3 6a4 4 0 0 0 8 0l-3-6"/></svg></span>
+        <div class="val-num">01</div>
+        <h3>Eşitlik</h3>
+        <p>Mühendis, İtfaiyeci, Futbolcu veya Berber… Harbie, her işi herkesin yapabileceğine olan sarsılmaz inancı oyun yoluyla çocuklara aktarır. <em>Mesleklerin cinsiyeti yoktur.</em></p>
+      </div>
+      <div class="val-card reveal">
+        <span class="val-ic" style="background:var(--pink-soft)"><svg viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-8.5C.8 9 2.3 5.5 5.5 5.5c1.9 0 3.2 1 3.9 2.2C10.3 6.5 11.6 5.5 13.5 5.5c3.2 0 4.7 3.5 3 7C16 16.65 12 21 12 21z"/></svg></span>
+        <div class="val-num">02</div>
+        <h3>Sosyal Fayda &amp; Dayanışma</h3>
+        <p>Her bir Harbie ilmeği; Hatay’daki kadın istihdamına, bölgesel kalkınmaya ve “Oyuncak Kumbarası” gibi çocukların gelişimini destekleyen atölyelere doğrudan katkı sağlar.</p>
+      </div>
+      <div class="val-card reveal">
+        <span class="val-ic" style="background:var(--sage-soft)"><svg viewBox="0 0 24 24" fill="none" stroke="#5b7a63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5-3 8-7 8-12a8 8 0 0 0-16 0c0 5 3 9 8 12z"/><path d="M12 12a4 4 0 0 0 0-6"/></svg></span>
+        <div class="val-num">03</div>
+        <h3>Doğallık &amp; Çocuk Sağlığı</h3>
+        <p>%100 el yapımı, pamuklu ve anti-alerjik içerik ve sağlıklı dokusuyla; ebeveynlerin güvenle tercih ettiği premium bir oyun deneyimi sunar.</p>
+      </div>
+      <div class="val-card reveal">
+        <span class="val-ic" style="background:#F3E7CF"><svg viewBox="0 0 24 24" fill="none" stroke="var(--wood-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.2 5.6L20 9.3l-4.3 3.7L17 19l-5-3-5 3 1.3-6L4 9.3l5.8-.7z"/></svg></span>
+        <div class="val-num">04</div>
+        <h3>Potansiyel ve İlham</h3>
+        <p>Çocuklara yepyeni bir oyuncak değil; karşılarına çıkacak her zorluğu aşacak cesareti veren, hayat boyu yanlarında taşıyacakları bir özgüven mirası sunar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== HİKAYEMİZ ===================== -->
+<section class="section" id="hikayemiz" style="background:var(--paper); border-block:1px solid var(--line);">
+  <div class="wrap">
+    <div class="split">
+      <div class="split-media reveal">
+        <img src="assets/gen/nazli-yeni.png" alt="Nazlı Demirel — Harbie ve Kadın Dostu Markalar" />
+        <div class="tag-float"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-8.5C.8 9 2.3 5.5 5.5 5.5c1.9 0 3.2 1 3.9 2.2C10.3 6.5 11.6 5.5 13.5 5.5c3.2 0 4.7 3.5 3 7C16 16.65 12 21 12 21z"/></svg> İyiliğe Bir İlmek Atölyeleri</div>
+      </div>
+      <div class="story-copy reveal">
+        <div class="sec-mark"><span class="thread draw-stitch"></span><span class="eyebrow">Hikayemiz</span></div>
+        <h2 class="h1">Hatay’da bir ilmekle başladı</h2>
+        <p>Kadın Dostu Markalar Platformu’nun (KDM) bir sosyal girişim modeli olarak Hatay’da doğan Harbie; pamuklu içeriği ve sağlıklı dokusuyla çocukların dünyasına <strong>eşitlik, cesaret ve dayanışma</strong> tohumları eken çok özel bir yol arkadaşıdır. Titiz bir el emeği ve sevgiyle üretilen bu değerler bütünü, “mesleklerin cinsiyeti yoktur” vizyonuyla toplumsal kalıplara meydan okur.</p>
+        <p>Her çocuğun potansiyelini keşfederken yanındaki güvenilir rehberi olan Harbie, Hatay’daki <strong>İyiliğe Bir İlmek Atölyeleri’nde</strong> yetenekli kadınlar tarafından üretiliyor. Bugünün oyunlarından yarının adil dünyasını kuran, her adımda cesareti ve özgünlüğü fısıldayan yaşayan bir ekosistem.</p>
+        <div class="founder">
+          <img src="assets/gen/nazli-yeni.png" alt="Nazlı Demirel" style="object-position:50% 14%" />
+          <div>
+            <div class="nm">Nazlı Demirel</div>
+            <div class="rl">Kadın Dostu Markalar Platformu</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== VİZYON / MİSYON ===================== -->
+<section class="section">
+  <div class="wrap">
+    <div class="head-block center reveal">
+      <span class="eyebrow center">Yönümüz</span>
+      <h2 class="h1" style="margin-top:18px;">Vizyon &amp; Misyon</h2>
+    </div>
+    <div class="vm-grid">
+      <div class="vm-card vis reveal">
+        <span class="vm-mark">“</span>
+        <span class="vm-label">Vizyonumuz</span>
+        <blockquote>Çocukların hayallerine sınır çizilmediği, toplumsal cinsiyet kalıplarının oyun alanlarından silindiği ve her çocuğun benzersiz potansiyelini özgürce keşfettiği adil ve eşit bir gelecek inşa etmek.</blockquote>
+      </div>
+      <div class="vm-card mis reveal">
+        <span class="vm-mark">“</span>
+        <span class="vm-label">Misyonumuz</span>
+        <blockquote>El emeğinin sıcaklığını, Hatay’daki kadın istihdam modelini ve “Mesleklerin Cinsiyeti Yoktur” manifestosunu amigurumi sanatıyla birleştirip geleceğin eşitlik elçilerini yetiştirmek.</blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SES — SOSYAL ETKİ SAYACI ===================== -->
+<section class="section ses" id="etki">
+  <div class="wrap">
+    <div class="ses-grid">
+      <div class="ses-copy reveal">
+        <div class="sec-mark"><span class="thread draw-stitch"></span><span class="eyebrow">Sosyal Etki Sayacı</span></div>
+        <h2>Her ilmekte iyilik, her adımda şeffaflık</h2>
+        <p>Geleceğe değer katmak ve çocukların hayallerine ortak olmak için buradayız. Dijital kumbaramız, platformumuz üzerinden yapılan her <strong>100 oyuncak paylaşımında</strong> otomatik olarak +1 oyuncak daha biriktiriyor.</p>
+        <p>Biriken oyuncaklar, dönemsel sosyal sorumluluk projelerimizde çocuklarla buluşuyor. Bu iyilik hareketine siz de ortak olun; mutluluğu birlikte çoğaltalım.</p>
+        <div class="pill-row" style="margin-top:24px;">
+          <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Şeffaf bağış</span>
+          <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Oyuncak Kumbarası</span>
+          <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Hatay kadın emeği</span>
+        </div>
+      </div>
+
+      <div class="ses-meter reveal" data-ses-meter>
+        <div class="eyebrow center" style="justify-content:center; color:var(--wood-deep); margin-bottom:10px;">Kumbaramızda</div>
+        <div class="ses-jar">
+          <span class="ses-count" data-ses-count>12.480</span>
+          <span class="ses-count-label">oyuncak</span>
+        </div>
+        <div class="ses-progress"><i data-ses-bar></i></div>
+        <div class="ses-progress-meta"><span data-ses-toward>520 paylaşım sonraki oyuncağa</span><span data-ses-goal>Hedef 13.000</span></div>
+        <div class="ses-actions">
+          <button class="btn btn-primary" data-ses-share>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5 15.4 17.5M15.4 6.5 8.6 10.5"/></svg>
+            Paylaş &amp; Katkıda Bulun
+          </button>
+          <a href="#koleksiyon" class="btn btn-soft">Oyuncak Sahiplen</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== B2B TEASER ===================== -->
+<section class="section b2b">
+  <div class="knit"></div>
+  <div class="wrap">
+    <div class="b2b-inner">
+      <div class="reveal">
+        <span class="eyebrow">Kurumsal İş Birlikleri</span>
+        <h2 style="margin-top:18px;">Ortak Değerimiz &amp; Sürdürülebilir Gelecek</h2>
+        <p>Harbie; ticari bir modelin ötesinde, toplumsal kalkınmayı ve fırsat eşitliğini destekleyen sürdürülebilir bir sosyal girişim ekosistemidir. Değer odaklı markalarla yürüttüğümüz stratejik iş birlikleriyle perakendede “Sosyal Etki Oyuncağı” kategorisinin öncülüğünü üstleniyoruz.</p>
+        <div style="margin-top:28px; display:flex; gap:14px; flex-wrap:wrap;">
+          <a href="b2b.html" class="btn btn-primary btn-lg">İş Birliği Talep Et
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="b2b.html" class="btn btn-ghost btn-lg" style="color:#fff;border-color:rgba(255,255,255,.3)">Kurumsal Çözümler</a>
+        </div>
+      </div>
+      <div class="b2b-points reveal">
+        <div class="b2b-point"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg></span><div><b>KSS Projeleri</b><span>Markanıza özel kurumsal sosyal sorumluluk programları</span></div></div>
+        <div class="b2b-point"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-7L9 3H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/></svg></span><div><b>Toplu Satın Alma</b><span>Kurumsal hediye süreçleriniz için özel koşullar</span></div></div>
+        <div class="b2b-point"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2zM9 21h6M10 17v4M14 17v4"/></svg></span><div><b>Özgünleştirme</b><span>Kurumsal kimliğinizle birebir eşleşen özel modeller</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo"><img src="assets/logo.png" alt="Harbie" /></div>
+        <p>Pamuklu içeriği ve el emeğiyle çocukların dünyasına eşitlik, cesaret ve dayanışma tohumları eken yol arkadaşı. Hatay’da, kadın eliyle örülür.</p>
+        <div class="news-form">
+          <input type="email" placeholder="E-posta adresiniz" aria-label="E-posta" />
+          <button class="btn btn-dark" type="button">Katıl</button>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Koleksiyon</h4>
+        <a href="urun-muhendis.html">Harbie Mühendis</a>
+        <a href="urun-muhendis.html">Harbie Futbolcu</a>
+        <a href="urun-muhendis.html">Harbie Berber</a>
+        <a href="urun-muhendis.html">Harbie İtfaiyeci</a>
+      </div>
+      <div class="footer-col">
+        <h4>Kurumsal</h4>
+        <a href="#hikayemiz">Hikayemiz</a>
+        <a href="#degerler">Değerlerimiz</a>
+        <a href="#etki">Sosyal Etki</a>
+        <a href="b2b.html">İş Birlikleri</a>
+      </div>
+      <div class="footer-col">
+        <h4>İletişim</h4>
+        <a href="b2b.html">B2B Talep Formu</a>
+        <a href="mailto:merhaba@harbie.com.tr">merhaba@harbie.com.tr</a>
+        <a href="#">Hatay, Türkiye</a>
+        <div class="social" style="margin-top:14px;">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2 0-3 1.4-3 3.4V11H9v3h2v7h3v-7h2.3l.7-3H14V9.6c0-.4.3-.6.7-.6z"/></svg></a>
+          <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 3c.3 2.2 1.6 3.7 3.8 3.9V10c-1.4.1-2.7-.3-3.8-1v6.2A5.2 5.2 0 1 1 11 10v3a2.2 2.2 0 1 0 2 2.2V3h3z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Harbie · Kadın Dostu Markalar Platformu. Tüm hakları saklıdır.</span>
+      <span class="italic-serif" style="color:var(--red); font-size:1.05rem;">Eşitlik oyunla başlar.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="ses-toast" data-ses-toast></div>
+
+<!-- Tweaks mount -->
+<div id="tweaks-root"></div>
+
+<script src="app.js"></script>
+<script src="refresh.js"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="tweaks-v2.jsx"></script>
+</body>
+</html>
