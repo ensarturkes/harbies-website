@@ -1,0 +1,139 @@
+/* ============================================================
+   HARBIE v3 — Bileşenler: sahne, lifestyle, SES, kurumsal, form
+   ============================================================ */
+
+/* ---------- Örgü doku ayırıcı ---------- */
+.knit-divider{height:14px;width:100%;opacity:.5;
+  background:repeating-linear-gradient(45deg,var(--line) 0 6px,transparent 6px 12px)}
+
+/* ---------- Sahne bileşeni ---------- */
+.scene{
+  --k:var(--accent);
+  display:grid;grid-template-columns:1fr 1fr;gap:var(--space-5);
+  align-items:center;
+  padding-block:var(--space-6);
+}
+.scene + .scene{padding-top:0}
+.scene-stage{
+  position:relative;
+  border-radius:var(--radius);overflow:hidden;
+  box-shadow:var(--shadow-card);
+  aspect-ratio:16/9;background:var(--bg-tint);
+}
+.scene-stage::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:4px;
+  background:var(--k);
+}
+.scene-video{width:100%;height:100%;object-fit:cover;cursor:pointer}
+.scene-tap{
+  position:absolute;inset:0;display:none;align-items:center;justify-content:center;
+  pointer-events:none;
+}
+.scene-tap span{
+  width:60px;height:60px;border-radius:50%;background:rgba(255,255,255,.9);
+  box-shadow:var(--shadow-soft);display:grid;place-items:center;
+}
+.scene-tap span::before{content:"";border-left:18px solid var(--k);border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:4px}
+.scene.tap-mode .scene-tap{display:flex}
+
+.scene-copy{max-width:34ch}
+.scene-kicker{font-size:var(--step-0);letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--k);margin:0 0 .7em}
+.scene-motto{font-family:var(--font-serif);font-size:var(--step-4);line-height:1.2;color:var(--ink);margin:0 0 .5em}
+.scene-desc{color:var(--muted);font-size:1.02rem;margin:0 0 1.4em}
+.scene-cta{background:var(--k);color:#fff}
+.scene-cta:hover{filter:brightness(1.05)}
+
+/* Sağ/sol yerleşim — kenar dönüşümü */
+.scene--sag .scene-stage{order:2}
+.scene--sag .scene-copy{order:1;justify-self:end;text-align:left}
+.scene--sol .scene-stage{order:1}
+.scene--sol .scene-copy{order:2}
+
+/* Karakter sayfası tam-genişlik hero varyantı */
+.scene--full{grid-template-columns:1fr;gap:var(--space-3);padding-block:var(--space-4)}
+.scene--full .scene-stage{order:0;aspect-ratio:21/9}
+.scene--full .scene-copy{order:0;max-width:none;text-align:center;justify-self:center}
+.scene--full .scene-motto{font-size:var(--step-5)}
+
+@media (max-width:760px){
+  .scene{grid-template-columns:1fr;gap:var(--space-3);padding-block:var(--space-5)}
+  .scene--sag .scene-stage,.scene--sag .scene-copy,
+  .scene--sol .scene-stage,.scene--sol .scene-copy{order:0;justify-self:stretch;text-align:left}
+  .scene-copy{max-width:none}
+}
+
+/* ---------- Manifesto ---------- */
+.manifesto{padding-block:var(--space-6);text-align:center}
+.manifesto p{font-family:var(--font-serif);font-size:var(--step-3);line-height:1.5;max-width:60ch;margin-inline:auto;color:var(--ink-soft)}
+
+/* ---------- Koleksiyon başlığı ---------- */
+.coll-head{text-align:center;padding-top:var(--space-5);max-width:64ch;margin-inline:auto}
+.coll-head p{color:var(--muted)}
+
+/* ---------- Lifestyle ---------- */
+.lifestyle{padding-block:var(--space-6)}
+.lifestyle-head{text-align:center;max-width:56ch;margin:0 auto var(--space-4)}
+.lifestyle-head p{color:var(--muted)}
+.lifestyle-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3)}
+.lifestyle-grid figure{margin:0;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-card);aspect-ratio:4/3}
+.lifestyle-grid img{width:100%;height:100%;object-fit:cover}
+@media (max-width:760px){.lifestyle-grid{grid-template-columns:1fr}}
+
+/* ---------- SES — Sosyal Etki Sayacı ---------- */
+.ses{background:var(--bg-soft);border-block:1px solid var(--line);padding-block:var(--space-6)}
+.ses-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:var(--space-5);align-items:center}
+.ses-copy h2{margin-bottom:.3em}
+.ses-copy p{color:var(--muted)}
+.ses-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow-card);padding:var(--space-4);text-align:center}
+.ses-count{font-family:var(--font-serif);font-size:clamp(3rem,9vw,4.6rem);font-weight:700;color:var(--active-accent);line-height:1;display:block}
+.ses-count-label{color:var(--muted);font-size:.9rem;letter-spacing:.06em}
+.ses-bar-wrap{height:10px;border-radius:var(--radius-pill);background:var(--bg-soft);overflow:hidden;margin:var(--space-3) 0 .6em}
+.ses-bar{height:100%;width:0;background:var(--active-accent);border-radius:inherit;transition:width .6s var(--ease)}
+.ses-meta{display:flex;justify-content:space-between;font-size:.8rem;color:var(--muted)}
+.ses-share{margin-top:var(--space-3)}
+.ses-toast{
+  position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);
+  background:var(--ink);color:#fff;padding:.7em 1.2em;border-radius:var(--radius-pill);
+  font-size:.9rem;display:inline-flex;align-items:center;gap:.5em;
+  opacity:0;pointer-events:none;transition:opacity .3s,transform .3s var(--ease);z-index:200;
+}
+.ses-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.ses-pop{font-size:1.3rem;pointer-events:none}
+@media (max-width:760px){.ses-inner{grid-template-columns:1fr;gap:var(--space-4)}}
+
+/* ---------- Kurumsal şerit ---------- */
+.corp-strip{background:var(--bg-tint);border-block:1px solid var(--line);padding-block:var(--space-5)}
+.corp-strip .container{display:grid;grid-template-columns:1.6fr 1fr;gap:var(--space-4);align-items:center}
+.corp-strip p{color:var(--muted);margin:0}
+.corp-strip .btn{justify-self:end}
+@media (max-width:760px){.corp-strip .container{grid-template-columns:1fr}.corp-strip .btn{justify-self:start}}
+
+/* ---------- Form (Kurumsal) ---------- */
+.form-field{margin-bottom:var(--space-3)}
+.form-field label{display:block;font-size:.85rem;font-weight:700;color:var(--ink-soft);margin-bottom:.35em}
+.form-field input,.form-field select,.form-field textarea{
+  width:100%;padding:.8em 1em;border:1px solid var(--line);border-radius:var(--radius-sm);
+  background:var(--white);font-family:inherit;font-size:1rem;color:var(--ink);
+  transition:border-color .2s,box-shadow .2s;
+}
+.form-field input:focus,.form-field select:focus,.form-field textarea:focus{
+  outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(201,79,61,.15);
+}
+.form-field textarea{min-height:130px;resize:vertical}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3)}
+.form-ok{background:#eaf6ee;border:1px solid #bfe3cb;color:#2c6a41;padding:1em 1.2em;border-radius:var(--radius-sm);display:none}
+.form-ok.show{display:block}
+@media (max-width:620px){.form-row{grid-template-columns:1fr}}
+
+/* ---------- Sekmeler (karakter sayfası) ---------- */
+.tabs-nav{display:flex;gap:.4em;border-bottom:1px solid var(--line);margin-bottom:var(--space-3);flex-wrap:wrap}
+.tab-btn{
+  appearance:none;border:0;background:none;cursor:pointer;
+  font-family:var(--font-sans);font-size:.98rem;font-weight:700;color:var(--muted);
+  padding:.7em 1em;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .2s,border-color .2s;
+}
+.tab-btn[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--k,var(--accent))}
+.tab-panel{display:none;animation:fadein .4s var(--ease)}
+.tab-panel.active{display:block}
+@keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.tab-panel{animation:none}}

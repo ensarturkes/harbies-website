@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Harbie — Mesleklerin cinsiyeti yoktur</title>
+<meta name="description" content="Hatay'da kadınların el emeğiyle ürettiği, %100 pamuklu amigurumi oyuncaklar. Geleceğin eşitlik elçileriyle tanışın.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+<!-- ==================== NAV ==================== -->
+<header class="site-nav">
+  <div class="container">
+    <a class="nav-logo" href="index.html">HARBİE</a>
+    <nav class="nav-links">
+      <a href="index.html#koleksiyon">Koleksiyon</a>
+      <a href="hikayemiz.html">Hikâyemiz</a>
+      <a href="kurumsal.html">Kurumsal</a>
+      <a href="index.html#ses">Sosyal Etki Sayacı</a>
+      <a class="nav-shop" href="https://shop.harbies.com" target="_blank" rel="noopener">Mağaza</a>
+    </nav>
+    <button class="nav-burger" data-burger aria-label="Menü" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<nav class="mobile-menu" id="mobile-menu" data-mobile-menu aria-label="Mobil menü">
+  <a href="index.html#koleksiyon">Koleksiyon</a>
+  <a href="hikayemiz.html">Hikâyemiz</a>
+  <a href="kurumsal.html">Kurumsal</a>
+  <a href="index.html#ses">Sosyal Etki Sayacı</a>
+  <a class="nav-shop" href="https://shop.harbies.com" target="_blank" rel="noopener">Mağaza ↗</a>
+</nav>
+
+<main>
+
+  <!-- ==================== HERO (düzen B) ==================== -->
+  <section class="hero">
+    <div class="hero-media">
+      <video class="scene-video" poster="assets/gen/hero.png"
+             muted playsinline preload="none" loop
+             aria-label="Harbie amigurumi kasaba meydanı"
+             data-scene data-src="assets/v3/video/hero.mp4"></video>
+    </div>
+    <div class="hero-scrim"></div>
+    <div class="container">
+      <div class="hero-inner">
+        <p class="kicker">Hatay'dan, el emeğiyle</p>
+        <h1 class="hero-title">Mesleklerin<br>cinsiyeti yoktur.</h1>
+        <p class="hero-sub">Harbie ile hikâyene başla…</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#koleksiyon">Koleksiyonu keşfet</a>
+          <a class="btn btn-ghost" href="hikayemiz.html">Hikâyemiz</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">kaydır</div>
+  </section>
+
+  <!-- ==================== MANİFESTO ==================== -->
+  <section class="manifesto container reveal">
+    <p>Çocuklar dünyaya sınırsız bir potansiyelle gelir. Ancak büyürken onlara toplumsal kalıplarla sınırlar öğretilir; hangi mesleklerin kime uygun olduğu söylenir. Biz bu sınırlara inanmıyoruz. Harbie, çocuklarımızın potansiyelini özgürleştiren, onlara her zorluğu aşacak cesareti fısıldayan ve her işi başarabileceklerine sarsılmaz bir inanç aşılayan güçlü bir yol arkadaşıdır.</p>
+  </section>
+
+  <div class="knit-divider" aria-hidden="true"></div>
+
+  <!-- ==================== KOLEKSİYON ==================== -->
+  <section id="koleksiyon" class="coll-head container reveal">
+    <p class="kicker">Koleksiyon</p>
+    <h2>Geleceğin Eşitlik Elçileri ile Tanışın</h2>
+    <p>Ebeveynlerin %65'inin değer odaklı satın alma yaptığı günümüzde, siz de çocuğunuza sadece bir oyuncak değil, bir karakter gelişimi yatırımı hediye edin. İşte ezber bozan ilk "Harbie" yol arkadaşları:</p>
+  </section>
+
+  <div class="container" data-scenes><!-- karakter bölümleri scenes.js ile basılır --></div>
+
+  <div class="knit-divider" aria-hidden="true"></div>
+
+  <!-- ==================== OYUN ARKADAŞI (lifestyle) ==================== -->
+  <section class="lifestyle container reveal">
+    <div class="lifestyle-head">
+      <p class="kicker">Oyun Arkadaşı</p>
+      <h2>Bir kucak dolusu cesaret</h2>
+      <p>Harbie sadece bir oyuncak değil; çocukların büyürken yanlarında taşıdıkları bir yol arkadaşı. Kucakta, sahada, hayalin olduğu her yerde.</p>
+    </div>
+    <div class="lifestyle-grid">
+      <figure><img src="assets/gen/lifestyle-kucak.png" alt="Harbie bebeğini kucaklayan çocuk" loading="lazy"></figure>
+      <figure><img src="assets/gen/lifestyle-mac.png" alt="Harbie bebekleriyle birlikte oynayan çocuklar" loading="lazy"></figure>
+    </div>
+  </section>
+
+  <!-- ==================== SES ==================== -->
+  <section id="ses" class="ses reveal" data-ses-meter>
+    <div class="container ses-inner">
+      <div class="ses-copy">
+        <p class="kicker">Sosyal Etki Sayacı</p>
+        <h2>Mutluluğu birlikte çoğaltalım</h2>
+        <p>Geleceğe değer katmak ve çocukların hayallerine ortak olmak için buradayız. Bu dijital kumbaramız, platformumuz üzerinden yapılan her 100 oyuncak paylaşımında otomatik olarak +1 oyuncak kazanıyor ve kumbaramızda biriktiriyor. Biriken oyuncaklar, dönemsel sosyal sorumluluk projelerimiz kapsamında çocuklarla buluşuyor. Her adımda şeffaf, her ilmekte iyilik dolu bu harekete siz de ortak olun!</p>
+      </div>
+      <div class="ses-card">
+        <span class="ses-count" data-ses-count>0</span>
+        <span class="ses-count-label">kumbaradaki oyuncak</span>
+        <div class="ses-bar-wrap"><div class="ses-bar" data-ses-bar></div></div>
+        <div class="ses-meta"><span data-ses-toward></span><span data-ses-goal></span></div>
+        <button class="btn btn-primary ses-share" data-ses-share>Paylaş ve destekle</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== KURUMSAL ŞERİT ==================== -->
+  <section class="corp-strip reveal">
+    <div class="container">
+      <div>
+        <p class="kicker">Kurumsal İş Birlikleri</p>
+        <p>Harbie; ticari bir modelin ötesinde, toplumsal kalkınmayı ve fırsat eşitliğini destekleyen sürdürülebilir bir sosyal girişim ekosistemidir. Kurumunuzun değerleriyle eşleşen modellerimizle KSS projelerinizi anlamlı bir toplumsal faydayla buluşturuyoruz.</p>
+      </div>
+      <a class="btn btn-primary" href="kurumsal.html">Kurumsal iş birliği</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="nav-logo" href="index.html">HARBİE</a>
+        <p>Kadın Dostu Markalar Platformu'nun Hatay'da doğan sosyal girişimi. "İyiliğe Bir İlmek" atölyelerinde, kadınların el emeğiyle üretilir.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Keşfet</h4>
+        <a href="index.html#koleksiyon">Koleksiyon</a>
+        <a href="hikayemiz.html">Hikâyemiz</a>
+        <a href="kurumsal.html">Kurumsal</a>
+        <a href="https://shop.harbies.com" target="_blank" rel="noopener">Mağaza ↗</a>
+      </div>
+      <div class="footer-col">
+        <h4>Karakterler</h4>
+        <a href="karakter-muhendis.html">Harbie Mühendis</a>
+        <a href="karakter-futbolcu.html">Harbie Futbolcu</a>
+        <a href="karakter-berber.html">Harbie Berber</a>
+        <a href="karakter-itfaiyeci.html">Harbie İtfaiyeci</a>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© <span data-year>2026</span> Harbie · Kadın Dostu Markalar Platformu</span>
+      <span>Mesleklerin cinsiyeti yoktur.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="ses-toast" data-ses-toast aria-live="polite"></div>
+
+<script src="js/data.js"></script>
+<script src="js/shell.js" defer></script>
+<script src="js/scenes.js" defer></script>
+<script src="js/ses.js" defer></script>
+</body>
+</html>
