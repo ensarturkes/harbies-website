@@ -17,7 +17,7 @@
       html +=
         '<section class="scene ' + edge + ' reveal" style="--k:var(--' + c.renk.replace(/^--/, '') + ')">' +
           '<div class="scene-stage">' +
-            '<video class="scene-video" poster="assets/gen/' + c.slug + '-diorama.png" ' +
+            '<video class="scene-video" poster="assets/v3/img/' + c.slug + '-b.jpg" ' +
                    'muted playsinline preload="none" loop ' +
                    'aria-label="' + c.ad + ' sahnesi" ' +
                    'data-scene data-src="assets/v3/video/' + c.slug + '.mp4"></video>' +
