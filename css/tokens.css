@@ -1,0 +1,52 @@
+/* ============================================================
+   HARBIE v3 — Tasarım Tokenları
+   ============================================================ */
+:root{
+  /* Zemin & mürekkep — premium beyaz alan (K4, docx) */
+  --bg:#fffdfa;
+  --bg-soft:#f7f1e8;
+  --bg-tint:#fbf6ef;
+  --ink:#2e2822;
+  --ink-soft:#4a4038;
+  --muted:#6f665c;
+  --line:#e8ded1;
+  --white:#ffffff;
+
+  /* Karakter vurgu renkleri */
+  --k-muhendis:#d99a2b;  /* hardal/kehribar — kıyafeti maviyle çakışmasın */
+  --k-futbolcu:#2f6bd0;  /* mavi */
+  --k-berber:#e08aa6;    /* pudra */
+  --k-itfaiyeci:#c94f3d; /* kırmızı */
+  --accent:var(--k-itfaiyeci);      /* varsayılan marka aksiyonu */
+  --active-accent:var(--k-itfaiyeci); /* scroll ile geçişli aktif renk (motion.js) */
+
+  /* Tipografi */
+  --font-serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --font-sans:"Nunito Sans",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  --step-0:.8125rem;
+  --step-1:1rem;
+  --step-2:1.25rem;
+  --step-3:1.6rem;
+  --step-4:2.1rem;
+  --step-5:2.9rem;
+  --step-6:clamp(2.6rem,6vw,4.4rem);
+
+  /* Boşluk & şekil */
+  --space-1:.5rem;
+  --space-2:1rem;
+  --space-3:1.5rem;
+  --space-4:2.5rem;
+  --space-5:4rem;
+  --space-6:6.5rem;
+  --radius:18px;
+  --radius-sm:10px;
+  --radius-pill:999px;
+  --shadow-card:0 18px 48px rgba(60,44,28,.14);
+  --shadow-soft:0 8px 24px rgba(60,44,28,.08);
+  --maxw:1200px;
+  --nav-h:68px;
+
+  /* Hareket */
+  --ease:cubic-bezier(.2,.7,.3,1);
+  --dur:.5s;
+}
