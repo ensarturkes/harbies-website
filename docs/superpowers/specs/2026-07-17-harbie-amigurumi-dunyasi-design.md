@@ -35,6 +35,8 @@ Toplantıdaki konumlandırma: *"Siz iplik cumhuriyeti dediniz — biz onu yaşay
 - 5 adet AI video (1 hero + 4 karakter aksiyonu)
 - 12 adet yeni AI görsel (5 klibin başlangıç/bitiş kareleri = 10, + 2 lifestyle)
 - Sekme metinlerinin taslak yazımı (Hatay hikâyesi, gelişim katkısı)
+- Hareket/animasyon katmanı (GSAP + ScrollTrigger)
+- `harbies-website` private repo + gizli önizleme deploy'u
 
 ### Hariç
 
@@ -58,6 +60,8 @@ Toplantıdaki konumlandırma: *"Siz iplik cumhuriyeti dediniz — biz onu yaşay
 | K6 | **Sıfırdan v3** | v1+v2 üst üste binmiş iki kuşak (41 KB CSS), seçilen yön ikisinden de farklı. Üçüncü katman atmak temizlemekten uzun sürer |
 | K7 | **Videolar sessiz** | Tarayıcılar sesli otomatik oynatmayı engelliyor; sesli video ya sessiz başlar (ses boşa üretilmiş olur) ya kullanıcıyı tıklamaya zorlar |
 | K8 | **Mevcut dioramalar korunur, yenileri üretilir** | Yeniler aksiyona göre komponize edilecek ve 16:9 olacak; eskiler yedek olarak durur, üretim aksarsa toplantıya elimiz boş gitmeyiz |
+| K9 | **Hareket katmanı: GSAP + ScrollTrigger** | Kurgu (tam ekran bölüm → video oynar → donar → metin gelir) scroll'a bağlı sahneleme. Elle yazılınca mobilde pin'lenen bölümler zıplar, adres çubuğu yüksekliği kaydırır. ~42 KB gzip, kaldırılan Tweaks paneli 300 KB'ydi — net kazanç |
+| K10 | **Repo private, deploy gizli önizleme** | Sözleşmesiz müşterinin markası ve onaylanmamış konsept, onlar görmeden herkese açık indekslenmemeli. Toplantıda gizli link aynı işi görür; müşteri onaylarsa halka açılır |
 
 ---
 
@@ -198,6 +202,29 @@ Her klip için **en az 2-3 deneme**, en iyisi seçilir. Video üretimi **ilk iş
 - **Eski dosyalar silinmez**, referans olarak durur.
 - Taşınan varlıklar: metin içeriği, SES sayacı mantığı, karakter verisi, mevcut ürün fotoğrafları.
 
+### Hareket katmanı (K9)
+
+**GSAP + ScrollTrigger.** Bölüm pinleme, video ilerlemesi, metin stagger'ı ve vurgu rengi geçişi tek zaman çizelgesinde yönetilir. ui-ux-pro-max setindeki GSAP hareket presetlerinden beslenir.
+
+Hareket listesi:
+
+| Nerede | Ne |
+|---|---|
+| Hero | Slogan kelime kelime girer; kamera meydanda süzülürken metin hafif paralaks yapar |
+| Karakter bölümü | Ekrana girince video başlar → son karede donar → metin alttan stagger ile gelir |
+| Bölümler arası | Vurgu rengi yumuşak geçiş (kicker, düğme, kart altı çizgisi) |
+| SES | Sayaç görününce sayar |
+| Ayırıcılar | Örgü/ilmek çizgileri çizilerek belirir (v2'de tohumu vardı) |
+| Sahne kartları | Hafif hover paralaksı |
+
+**Kısıtlar (pazarlık edilmez):**
+
+- **Scroll hijack yok.** Kullanıcı istediği hızda geçer; hiçbir animasyon onu bekletmez.
+- `prefers-reduced-motion` açıkken tüm hareket kapanır, statik kareler kalır.
+- Animasyon hiçbir zaman içeriğin görünmesini geciktirmez — metin animasyonsuz da okunabilir durumda olmalı.
+
+*İlke:* premium his hareketin çokluğundan değil, hiçbirinin gecikmemesinden gelir.
+
 ### Performans ("premium = hızlı")
 
 Beş adet 1080p video ciddi ağırlık. Kurallar:
@@ -249,3 +276,4 @@ Beş adet 1080p video ciddi ağırlık. Kurallar:
 - **Form gönderim hedefi:** Kurumsal formun bağlanacağı servis toplantı sonrası belirlenecek; arayüz hazır olacak.
 - **`shop.harbies.com` URL'i** varsayımdır; kesin alan adı müşteriden teyit edilecek.
 - **Sekme metinleri** taslaktır; müşteri revize edecek.
+- **Deploy platformu** seçilmedi (Vercel / Netlify / GitHub Pages). Karar, gizli önizleme desteği ve video dosyalarının boyutuna göre verilecek (K10).
