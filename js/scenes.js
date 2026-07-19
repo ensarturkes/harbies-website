@@ -10,6 +10,11 @@
   var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var mqMobile = window.matchMedia('(max-width:860px)');
 
+  /* Varlık yolları — yeni kareler (karakter sağda) hazır olunca
+     buradan tek satırda img2/video2'ye geçilir. */
+  var IMG = 'assets/v3/img/', IMGEXT = '.jpg';
+  var VID = 'assets/v3/video/';
+
   var host = document.querySelector('[data-scenes]');
   var chars = window.HARBIE_CHARS || [];
 
@@ -31,16 +36,10 @@
       panels +=
         '<article class="char-panel' + (i === 0 ? ' is-active' : '') + '" data-panel="' + i + '" ' +
                  'style="--k:' + k + '" aria-hidden="' + (i === 0 ? 'false' : 'true') + '">' +
-          '<video class="panel-video" poster="assets/v3/img/' + c.slug + '-b.jpg" ' +
+          '<video class="panel-video" poster="' + IMG + c.slug + '-b' + IMGEXT + '" ' +
                  'muted playsinline preload="none" loop ' +
                  'aria-label="' + c.ad + ' sahnesi" ' +
-                 'data-scene data-src="assets/v3/video/' + c.slug + '.mp4"></video>' +
-          '<div class="panel-copy">' +
-            '<p class="panel-kicker">' + c.bolumNo + ' — ' + c.unvan + '</p>' +
-            '<h3 class="panel-motto">' + c.motto + '</h3>' +
-            '<p class="panel-desc">' + c.aciklama + '</p>' +
-            '<a class="btn panel-cta" href="karakter-' + c.slug + '.html">Hikâyesini oku</a>' +
-          '</div>' +
+                 'data-scene data-src="' + VID + c.slug + '.mp4"></video>' +
         '</article>';
     });
 
@@ -55,6 +54,12 @@
               '<span class="rail-track"><span class="rail-thumb" data-rail-thumb></span></span>' +
               rail +
             '</nav>' +
+            '<div class="panel-copy" data-copy>' +
+              '<p class="panel-kicker" data-copy-kicker></p>' +
+              '<h3 class="panel-motto" data-copy-motto></h3>' +
+              '<p class="panel-desc" data-copy-desc></p>' +
+              '<a class="btn panel-cta" data-copy-cta href="#">Hikâyesini oku</a>' +
+            '</div>' +
           '</div>' +
         '</div>' +
       '</div>';
@@ -83,8 +88,32 @@
     });
   }
 
+  var copyBox = showcase ? showcase.querySelector('[data-copy]') : null;
+  var elKicker = showcase ? showcase.querySelector('[data-copy-kicker]') : null;
+  var elMotto = showcase ? showcase.querySelector('[data-copy-motto]') : null;
+  var elDesc = showcase ? showcase.querySelector('[data-copy-desc]') : null;
+  var elCta = showcase ? showcase.querySelector('[data-copy-cta]') : null;
+
+  function paintCopy(i) {
+    var c = chars[i];
+    if (!c || !copyBox) return;
+    function fill() {
+      elKicker.textContent = c.bolumNo + ' — ' + c.unvan;
+      elMotto.textContent = c.motto;
+      elDesc.textContent = c.aciklama;
+      elCta.setAttribute('href', 'karakter-' + c.slug + '.html');
+      copyBox.style.setProperty('--k', c.renk ? 'var(' + c.renk + ')' : 'var(--accent)');
+      copyBox.classList.remove('is-out');
+    }
+    if (rm || current < 0) { fill(); return; }
+    copyBox.classList.add('is-out');
+    clearTimeout(copyBox._t);
+    copyBox._t = setTimeout(fill, 220);
+  }
+
   function setActive(i) {
     if (i === current || i < 0 || i >= charPanels.length) return;
+    paintCopy(i);
     current = i;
     railItems.forEach(function (b, j) {
       var on = j === i;
@@ -145,16 +174,8 @@
     onScroll();
   }
 
-  /* ---------- Mobil: her panel görününce aktifleşsin ---------- */
-  if (showcase && 'IntersectionObserver' in window) {
-    var pio = new IntersectionObserver(function (entries) {
-      if (!mqMobile.matches) return;
-      entries.forEach(function (e) {
-        if (e.isIntersecting) setActive(parseInt(e.target.dataset.panel, 10));
-      });
-    }, { threshold: 0.5 });
-    charPanels.forEach(function (p) { pio.observe(p); });
-  }
+  /* Mobilde paneller üst üste duruyor (masaüstüyle aynı) — aktif karakteri
+     yalnızca üstteki chip'ler belirler; scroll ile değişmez. */
 
   /* ---------- Diğer videolar (hero, karakter sayfası) ---------- */
   var others = document.querySelectorAll('video[data-scene]:not(.char-panel video)');
