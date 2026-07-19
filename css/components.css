@@ -62,6 +62,90 @@
   .scene-copy{max-width:none}
 }
 
+/* ============================================================
+   KARAKTER VİTRİNİ — scroll ile tek tek değişen, sol seçicili
+   ============================================================ */
+.showcase{
+  position:relative;
+  /* Her karakter için ~1 ekran kaydırma payı */
+  height:calc(var(--count,4) * 92vh + 60vh);
+}
+.showcase-pin{
+  position:sticky;top:var(--nav-h);
+  height:calc(100vh - var(--nav-h));
+  display:flex;align-items:center;
+}
+.showcase-inner{
+  width:100%;max-width:var(--maxw);margin-inline:auto;
+  padding-inline:var(--space-3);
+  display:grid;grid-template-columns:210px 1fr;gap:var(--space-5);
+  align-items:center;
+}
+
+/* ---- Sol: karakter seçici ---- */
+.showcase-rail{position:relative;display:flex;flex-direction:column;gap:.15rem;padding-left:14px}
+.rail-track{
+  position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--line);border-radius:2px;
+}
+.rail-thumb{
+  position:absolute;left:0;top:0;width:2px;height:25%;
+  background:var(--active-accent);border-radius:2px;
+  transition:transform .45s var(--ease),background .45s var(--ease);
+}
+.rail-item{
+  appearance:none;border:0;background:none;cursor:pointer;text-align:left;
+  font-family:var(--font-sans);padding:.6rem .2rem;border-radius:var(--radius-sm);
+  display:grid;grid-template-columns:auto 1fr;column-gap:.6rem;align-items:baseline;
+  opacity:.42;transition:opacity .35s var(--ease),transform .35s var(--ease);
+}
+.rail-item:hover{opacity:.75}
+.rail-item.is-active{opacity:1;transform:translateX(3px)}
+.rail-no{font-size:.7rem;font-weight:800;letter-spacing:.1em;color:var(--muted)}
+.rail-item.is-active .rail-no{color:var(--k)}
+.rail-name{font-family:var(--font-serif);font-size:1.18rem;font-weight:600;color:var(--ink);line-height:1.1}
+.rail-unvan{grid-column:2;font-size:.72rem;color:var(--muted);letter-spacing:.04em}
+
+/* ---- Sağ: paneller (üst üste, aktif görünür) ---- */
+.panel-wrap{position:relative;min-height:60vh}
+.char-panel{
+  position:absolute;inset:0;
+  display:grid;grid-template-columns:1.15fr .85fr;gap:var(--space-4);align-items:center;
+  opacity:0;visibility:hidden;transform:translateY(14px);
+  transition:opacity .5s var(--ease),transform .5s var(--ease),visibility .5s;
+}
+.char-panel.is-active{opacity:1;visibility:visible;transform:none}
+.char-panel .scene-stage{aspect-ratio:16/10}
+.panel-copy{max-width:32ch}
+.char-panel.tap-mode .scene-tap{display:flex}
+
+@media (max-width:860px){
+  /* Mobil: pin yok — her karakter kendi bloğunda dikey akar */
+  .showcase{height:auto}
+  .showcase-pin{position:static;height:auto;display:block}
+  .showcase-inner{grid-template-columns:1fr;gap:var(--space-3);padding-inline:0}
+  .showcase-rail{
+    position:sticky;top:var(--nav-h);z-index:20;
+    flex-direction:row;gap:.4rem;overflow-x:auto;padding:.6rem var(--space-3);
+    background:rgba(255,253,250,.92);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .rail-track{display:none}
+  .rail-item{flex:0 0 auto;grid-template-columns:auto;row-gap:0;padding:.4rem .8rem;
+    border:1px solid var(--line);border-radius:var(--radius-pill);opacity:.6}
+  .rail-item.is-active{opacity:1;transform:none;border-color:var(--k);background:var(--k);}
+  .rail-item.is-active .rail-name,.rail-item.is-active .rail-no{color:#fff}
+  .rail-unvan{display:none}
+  .rail-no{display:none}
+  .rail-name{font-size:.95rem}
+  .panel-wrap{min-height:0}
+  .char-panel{
+    position:static;opacity:1;visibility:visible;transform:none;
+    grid-template-columns:1fr;gap:var(--space-3);
+    padding:var(--space-4) var(--space-3);
+  }
+  .panel-copy{max-width:none}
+}
+
 /* ---------- Manifesto ---------- */
 .manifesto{padding-block:var(--space-6);text-align:center}
 .manifesto p{font-family:var(--font-serif);font-size:var(--step-3);line-height:1.5;max-width:60ch;margin-inline:auto;color:var(--ink-soft)}
