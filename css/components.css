@@ -164,6 +164,14 @@
 }
 .showcase-ui > *{pointer-events:auto}
 
+/* Geniş ekranda liste sayfanın ortasında asılı kalmasın, sola yaslansın.
+   Metin zaten .panel-copy içinde 44ch ile sınırlı, okunurluk bozulmuyor. */
+/* Eşik 1280px: bu genişlikte 5vw (64px) ile ortalanmış kapsayıcının sol
+   boşluğu birebir eşit — geçişte sıçrama olmuyor. */
+@media (min-width:1280px){
+  .showcase-ui{max-width:none;padding-inline:clamp(32px,5vw,104px)}
+}
+
 /* ---- Sol: daraltılmış karakter seçici ---- */
 .showcase-rail{position:relative;display:flex;flex-direction:column;gap:0;padding-left:13px;align-self:center}
 .rail-track{position:absolute;left:0;top:0;bottom:0;width:1.5px;background:var(--line);border-radius:2px}
