@@ -2,15 +2,19 @@
    HARBIE v3 — Bileşenler: sahne, lifestyle, SES, kurumsal, form
    ============================================================ */
 
-/* ---------- İlmek ayırıcı (gerçek dikiş) ---------- */
-.knit-divider{height:24px;width:100%;color:var(--line)}
-.stitch-divider svg{width:100%;height:24px;display:block}
-/* Çizim yalnızca JS + hareket izni varsa devreye girer.
-   Varsayılan: tam görünür — hiçbir koşulda gizli takılı kalmaz. */
-.stitch-draw svg{clip-path:inset(0 100% 0 0);transition:clip-path 1.4s var(--ease)}
-.stitch-draw.in svg{clip-path:inset(0 0 0 0)}
+/* ---------- İlmek ayırıcı: zincir ilmek (tekrarlayan desen) ---------- */
+.knit-divider{
+  height:34px;width:100%;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2021%2034%27%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%23e08aa6%27%20stroke-width%3D%273.1%27%20stroke-linecap%3D%27round%27%3E%3Cellipse%20cx%3D%27-10.5%27%20cy%3D%2717%27%20rx%3D%2713.5%27%20ry%3D%278.2%27%20transform%3D%27rotate%28-16%20-10.5%2017%29%27%2F%3E%3Cellipse%20cx%3D%2710.5%27%20cy%3D%2717%27%20rx%3D%2713.5%27%20ry%3D%278.2%27%20transform%3D%27rotate%28-16%2010.5%2017%29%27%2F%3E%3Cellipse%20cx%3D%2731.5%27%20cy%3D%2717%27%20rx%3D%2713.5%27%20ry%3D%278.2%27%20transform%3D%27rotate%28-16%2031.5%2017%29%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  background-repeat:repeat-x;
+  background-size:21px 34px;      /* halkalar her genişlikte aynı oranda */
+  background-position:center;
+}
+/* Çizim yalnızca JS + hareket izni varsa; varsayılan tam görünür */
+.stitch-draw{clip-path:inset(0 100% 0 0);transition:clip-path 1.6s var(--ease)}
+.stitch-draw.in{clip-path:inset(0 0 0 0)}
 @media (prefers-reduced-motion:reduce){
-  .stitch-draw svg{clip-path:none !important;transition:none}
+  .stitch-draw{clip-path:none !important;transition:none}
 }
 
 /* ---------- Bölüm süsü: iplik yayı + yumak ---------- */

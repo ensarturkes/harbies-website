@@ -1,84 +1,78 @@
 /* ============================================================
    HARBIE v3 — İlmek katmanı
-   Bölüm ayırıcılarını gerçek "dikiş"e çevirir ve bölümlere
-   ince iplik/yumak süsleri ekler.
+   Ayırıcılar gerçek ZİNCİR İLMEK (iç içe geçmiş örgü halkaları),
+   süsler bükümlü iplik + sarılı yumak olarak çizilir.
    KURAL (UI-UX Pro Max): dekoratif öğede sonsuz döngü YOK —
-   hareket yalnızca scroll'a bağlı. Motor durursa iplik
-   tam çizili ve görünür kalır (asla kaybolmaz).
+   hareket yalnızca scroll'a bağlı. Motor durursa iplik tam
+   çizili ve görünür kalır.
    ============================================================ */
 (function () {
   'use strict';
 
   var NS = 'http://www.w3.org/2000/svg';
-
   function el(name, attrs) {
     var n = document.createElementNS(NS, name);
     for (var k in attrs) n.setAttribute(k, attrs[k]);
     return n;
   }
 
-  /* ---------- 1) Ayırıcılar → el dikişi ---------- */
+  /* ---------- Sarılı yumak ---------- */
+  function yarnBall(cx, cy, r) {
+    var g = el('g', {});
+    g.appendChild(el('circle', { cx: cx, cy: cy, r: r, fill: 'currentColor', opacity: '.13' }));
+    g.appendChild(el('circle', { cx: cx, cy: cy, r: r, fill: 'none', stroke: 'currentColor',
+      'stroke-width': '2.2', opacity: '.6' }));
+    // sarım izleri
+    [[-0.62, 0.5], [-0.2, 0.85], [0.25, 0.8], [0.6, 0.45]].forEach(function (p) {
+      g.appendChild(el('path', {
+        d: 'M' + (cx + p[0] * r) + ' ' + (cy - r * p[1]) +
+           ' Q ' + (cx + p[0] * r * 0.2) + ' ' + cy + ', ' +
+           (cx + p[0] * r) + ' ' + (cy + r * p[1]),
+        fill: 'none', stroke: 'currentColor', 'stroke-width': '1.6',
+        'stroke-linecap': 'round', opacity: '.45'
+      }));
+    });
+    return g;
+  }
+
+  /* ---------- 1) Ayırıcılar: zincir ilmek deseni CSS'te.
+     Burada yalnızca çizim animasyonu sınıfı ekleniyor. ---------- */
   document.querySelectorAll('.knit-divider').forEach(function (d) {
-    d.innerHTML = '';
-    d.classList.add('stitch-divider');
-    // Çizim animasyonu yalnızca IO + hareket izni varsa
     if ('IntersectionObserver' in window &&
         !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       d.classList.add('stitch-draw', 'reveal');
     }
-
-    var svg = el('svg', {
-      viewBox: '0 0 1200 24', preserveAspectRatio: 'none',
-      'aria-hidden': 'true', focusable: 'false'
-    });
-    // Hafif dalgalı bir dikiş hattı
-    var path = el('path', {
-      d: 'M0 12 C 100 4, 200 20, 300 12 S 500 4, 600 12 S 800 20, 900 12 S 1100 4, 1200 12',
-      fill: 'none', stroke: 'currentColor', 'stroke-width': '2.5',
-      'stroke-linecap': 'round', 'stroke-dasharray': '14 11'
-    });
-    svg.appendChild(path);
-    // İki ucunda küçük yumak düğümü
-    svg.appendChild(el('circle', { cx: 4, cy: 12, r: 3.5, fill: 'currentColor', opacity: '.85' }));
-    svg.appendChild(el('circle', { cx: 1196, cy: 12, r: 3.5, fill: 'currentColor', opacity: '.85' }));
-    d.appendChild(svg);
   });
 
-  /* Güvenlik ağı: gözlemci herhangi bir sebeple tetiklenmezse
-     3sn sonra dikişleri zorla göster — asla gizli kalmasın. */
+  /* Güvenlik ağı: gözlemci tetiklenmezse 3sn sonra zorla göster. */
   setTimeout(function () {
     document.querySelectorAll('.stitch-draw:not(.in)').forEach(function (d) {
       d.classList.add('in');
     });
   }, 3000);
 
-  /* ---------- 2) Bölüm süsleri: iplik yayı + yumak ---------- */
-  var YARN = {
-    arc: function (flip) {
-      var svg = el('svg', { viewBox: '0 0 220 180', 'aria-hidden': 'true', focusable: 'false' });
-      var g = el('g', flip ? { transform: 'translate(220,0) scale(-1,1)' } : {});
-      g.appendChild(el('path', {
-        d: 'M8 172 C 8 92, 60 34, 140 26',
-        fill: 'none', stroke: 'currentColor', 'stroke-width': '2',
-        'stroke-linecap': 'round', 'stroke-dasharray': '12 9', opacity: '.55'
-      }));
-      // yumak
-      g.appendChild(el('circle', { cx: 160, cy: 24, r: 20, fill: 'currentColor', opacity: '.14' }));
-      g.appendChild(el('circle', { cx: 160, cy: 24, r: 20, fill: 'none', stroke: 'currentColor', 'stroke-width': '1.6', opacity: '.5' }));
-      g.appendChild(el('path', {
-        d: 'M144 16 C 154 22, 166 26, 176 32 M146 32 C 156 26, 166 20, 174 15',
-        fill: 'none', stroke: 'currentColor', 'stroke-width': '1.4', opacity: '.5', 'stroke-linecap': 'round'
-      }));
-      svg.appendChild(g);
-      return svg;
-    }
-  };
+  /* ---------- 2) Bölüm süsü: bükümlü iplik + yumak ---------- */
+  function yarnStrand(flip) {
+    var svg = el('svg', { viewBox: '0 0 220 190', 'aria-hidden': 'true', focusable: 'false' });
+    var g = el('g', flip ? { transform: 'translate(220,0) scale(-1,1)' } : {});
+    var d1 = 'M10 184 C 6 110, 48 46, 132 34';
+    // kalın gövde
+    g.appendChild(el('path', { d: d1, fill: 'none', stroke: 'currentColor',
+      'stroke-width': '4.4', 'stroke-linecap': 'round', opacity: '.5' }));
+    // büküm izi (ipliğin katları)
+    g.appendChild(el('path', { d: d1, fill: 'none', stroke: 'var(--bg)',
+      'stroke-width': '1.5', 'stroke-linecap': 'round',
+      'stroke-dasharray': '3 9', opacity: '.85' }));
+    g.appendChild(yarnBall(160, 30, 22));
+    svg.appendChild(g);
+    return svg;
+  }
 
   document.querySelectorAll('[data-yarn]').forEach(function (host) {
     var deco = document.createElement('div');
     deco.className = 'yarn-deco yarn-deco--' + (host.dataset.yarn || 'sol');
     deco.setAttribute('aria-hidden', 'true');
-    deco.appendChild(YARN.arc(host.dataset.yarn === 'sag'));
+    deco.appendChild(yarnStrand(host.dataset.yarn === 'sag'));
     host.appendChild(deco);
   });
 
@@ -86,15 +80,12 @@
   var decos = document.querySelectorAll('.yarn-deco');
   if (!decos.length) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  if (!window.gsap || !window.ScrollTrigger) return;   // yoksa sabit dururlar, sorun değil
+  if (!window.gsap || !window.ScrollTrigger) return;
 
-  decos.forEach(function (d, i) {
-    gsap.fromTo(d, { y: 18 }, {
-      y: -18, ease: 'none',
-      scrollTrigger: {
-        trigger: d.parentElement,
-        start: 'top bottom', end: 'bottom top', scrub: true
-      }
+  decos.forEach(function (d) {
+    gsap.fromTo(d, { y: 20 }, {
+      y: -20, ease: 'none',
+      scrollTrigger: { trigger: d.parentElement, start: 'top bottom', end: 'bottom top', scrub: true }
     });
   });
 })();
