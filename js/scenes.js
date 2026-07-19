@@ -10,10 +10,10 @@
   var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var mqMobile = window.matchMedia('(max-width:860px)');
 
-  /* Varlık yolları — yeni kareler (karakter sağda) hazır olunca
-     buradan tek satırda img2/video2'ye geçilir. */
-  var IMG = 'assets/v3/img/', IMGEXT = '.jpg';
-  var VID = 'assets/v3/video/';
+  /* Varlık yolları — v2 kareler: karakter sağda, sol taraf metne boş,
+     videolarda sağdan giriş animasyonu. */
+  var IMG = 'assets/v3/img2/web/', IMGEXT = '.jpg';
+  var VID = 'assets/v3/video2/';
 
   var host = document.querySelector('[data-scenes]');
   var chars = window.HARBIE_CHARS || [];
