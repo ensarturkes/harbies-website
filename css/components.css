@@ -106,6 +106,16 @@
   position:sticky;top:0;height:100vh;height:100svh;
   overflow:hidden;background:var(--bg-tint);
 }
+/* Alt kenar sayfa zeminine erisin — video kesilmiş gibi durmasın */
+.showcase-pin::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:120px;z-index:1;
+  pointer-events:none;
+  background:linear-gradient(to bottom,
+    rgba(255,253,250,0)   0%,
+    rgba(255,253,250,.35) 45%,
+    rgba(255,253,250,.82) 78%,
+    rgb(255,253,250)      100%);
+}
 
 /* ---- Video: tam ekran ---- */
 .showcase-stage{position:absolute;inset:0}
@@ -134,7 +144,7 @@
 
 /* ---- Üst katman: [dar liste] [metin] ---- */
 .showcase-ui{
-  position:absolute;inset:0;
+  position:absolute;inset:0;z-index:2;      /* alt geçiş katmanının üstünde kalsın */
   max-width:var(--maxw);margin-inline:auto;
   padding:var(--nav-h) var(--space-3) var(--space-4);
   display:grid;grid-template-columns:132px minmax(0,1fr);
@@ -191,6 +201,7 @@
 @media (max-width:860px){
   /* Mobil: pin yok — chip'lerle geçilen TEK video + altında metin */
   .showcase{height:auto}
+  .showcase-pin::after{display:none}        /* dizilim yığılınca alt geçiş gerekmez */
   .showcase-pin{position:static;height:auto;overflow:visible;background:none;
     display:flex;flex-direction:column}
   .showcase-ui{display:contents}            /* rail ve metin doğrudan flex çocuğu olsun */
