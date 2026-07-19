@@ -48,14 +48,8 @@
     });
   });
 
-  /* ---------- Örgü ayırıcı: çizilerek beliriş (immediateRender:false → fail olursa görünür) ---------- */
-  document.querySelectorAll('.knit-divider').forEach(function (d) {
-    gsap.from(d, {
-      scaleX: 0, transformOrigin: 'left center', duration: 1, ease: 'power2.out',
-      immediateRender: false,
-      scrollTrigger: { trigger: d, start: 'top 90%' }
-    });
-  });
+  /* Örgü ayırıcının çizilme animasyonu CSS'te (.stitch-draw + clip-path).
+     Burada scaleX uygulanmıyor: ölçekleme örgü dokusunu yatayda eziyordu. */
 
   /* Sayfa/görsel yüklenince pozisyonları tazele (font/görsel kayması). */
   window.addEventListener('load', function () { ScrollTrigger.refresh(); });
