@@ -23,16 +23,19 @@
 - **Yeni AI görsel/video ÜRETİLMEYECEK** — aylık kota yarılandı, kalan ~488 kredi.
 
 ## Açık işler
-1. **İplik görünümü** — kullanıcı örgülü/saç örgüsü dokulu kordon referansı verdi (pembe, V şeklinde ilmekler).
-   Şu anki hâl: `css/components.css` içinde `.knit-divider` → SVG data-URI döşeme (240x44, bükümlü kordon).
-   Yapılacak: örgü dokusunu birebir yakalamak (bkz. aşağıdaki yöntem).
-2. Hero başlığı 3 satıra iniyor — 2 satıra sabitlensin mi?
+1. Hero başlığı 3 satıra iniyor — 2 satıra sabitlensin mi?
 3. İtfaiyeci videosu son karesi poster ile tam örtüşmüyor (küçük sıçrama).
 4. Mühendis videosunda vinç tasarımı ortada değişiyor.
 5. Sekme metinleri taslak — müşteri revize edecek.
 
-## İplik için planlanan yöntem
-Saf CSS gradyanla örgü dokusu yapılamaz. Yöntem: **SVG döşeme, örgü segmentleri hesaplanarak**.
-Python ile sinüs dalgası örneklenip, dalga boyunca eğimi dönüşümlü ("/ \ / \") küçük yuvarlatılmış
-ilmek şekilleri yerleştirilir; üstüne açık ışık + koyu gölge katmanı. Tek periyot döşeme olarak
-`background-repeat:repeat-x` ile yatayda kesintisiz tekrarlanır — her ekran genişliğinde kalınlık sabit.
+## İplik yöntemi (uygulandı)
+Örgü dokusu saf CSS gradyanla yapılamaz. Üretici: `tools/knit-tile.py`.
+Sinüs dalgası örneklenir, dalga boyunca teğet çerçevesine oturan V ilmekler dizilir
+(iki sıra, yarım adım kaydırmalı → saç örgüsü). Tek periyot döşeme, `repeat-x`,
+sabit `mask-size` → kalınlık her ekran genişliğinde aynı.
+
+Renk SVG'ye **gömülmez**: iki maske katmanı (gövde + ilmek/alt kenar) `mask-image`
+ile uygulanır, rengi `background-color:var(--accent)` verir. Böylece kordon bulunduğu
+bölümün rengini alır (ana sayfa terrakota, mühendis amber, futbolcu mavi, berber pembe).
+Kenar süs iplikleri `js/yarn.js` içinde aynı deseni Bézier boyunca üretir, `currentColor`
+üzerinden `--active-accent` alır.
