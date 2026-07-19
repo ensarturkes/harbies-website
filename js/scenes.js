@@ -31,18 +31,15 @@
       panels +=
         '<article class="char-panel' + (i === 0 ? ' is-active' : '') + '" data-panel="' + i + '" ' +
                  'style="--k:' + k + '" aria-hidden="' + (i === 0 ? 'false' : 'true') + '">' +
-          '<div class="scene-stage">' +
-            '<video class="scene-video" poster="assets/v3/img/' + c.slug + '-b.jpg" ' +
-                   'muted playsinline preload="none" loop ' +
-                   'aria-label="' + c.ad + ' sahnesi" ' +
-                   'data-scene data-src="assets/v3/video/' + c.slug + '.mp4"></video>' +
-            '<div class="scene-tap"><span></span></div>' +
-          '</div>' +
+          '<video class="panel-video" poster="assets/v3/img/' + c.slug + '-b.jpg" ' +
+                 'muted playsinline preload="none" loop ' +
+                 'aria-label="' + c.ad + ' sahnesi" ' +
+                 'data-scene data-src="assets/v3/video/' + c.slug + '.mp4"></video>' +
           '<div class="panel-copy">' +
-            '<p class="scene-kicker">' + c.bolumNo + ' — ' + c.unvan + '</p>' +
-            '<h3 class="scene-motto">' + c.motto + '</h3>' +
-            '<p class="scene-desc">' + c.aciklama + '</p>' +
-            '<a class="btn scene-cta" href="karakter-' + c.slug + '.html">Hikâyesini oku</a>' +
+            '<p class="panel-kicker">' + c.bolumNo + ' — ' + c.unvan + '</p>' +
+            '<h3 class="panel-motto">' + c.motto + '</h3>' +
+            '<p class="panel-desc">' + c.aciklama + '</p>' +
+            '<a class="btn panel-cta" href="karakter-' + c.slug + '.html">Hikâyesini oku</a>' +
           '</div>' +
         '</article>';
     });
@@ -50,11 +47,14 @@
     host.innerHTML =
       '<div class="showcase" data-showcase style="--count:' + chars.length + '">' +
         '<div class="showcase-pin">' +
-          '<div class="showcase-inner">' +
-            '<nav class="showcase-rail" aria-label="Karakter seçimi">' + rail +
+          '<div class="showcase-stage">' + panels + '</div>' +
+          '<div class="showcase-scrim" aria-hidden="true"></div>' +
+          '<div class="showcase-tap"><span></span></div>' +
+          '<div class="showcase-ui">' +
+            '<nav class="showcase-rail" aria-label="Karakter seçimi">' +
               '<span class="rail-track"><span class="rail-thumb" data-rail-thumb></span></span>' +
+              rail +
             '</nav>' +
-            '<div class="panel-wrap">' + panels + '</div>' +
           '</div>' +
         '</div>' +
       '</div>';
@@ -96,11 +96,12 @@
       p.classList.toggle('is-active', on);
       p.setAttribute('aria-hidden', on ? 'false' : 'true');
     });
+    var k = charPanels[i].style.getPropertyValue('--k');
     if (railThumb) {
       railThumb.style.transform = 'translateY(' + (i * 100) + '%)';
+      if (k) railThumb.style.setProperty('--k-active', k.trim());
     }
     // Aktif karakter rengini sayfaya yay
-    var k = charPanels[i].style.getPropertyValue('--k');
     if (k) document.documentElement.style.setProperty('--active-accent', k.trim());
     playPanel(i);
   }
@@ -172,18 +173,33 @@
 
   /* ---------- Dokun-oynat (autoplay kapalıyken) ---------- */
   if (!canAutoplay()) {
-    document.querySelectorAll('.scene, .hero-media, .char-panel').forEach(function (s) {
+    document.querySelectorAll('.scene, .hero-media, .showcase-pin').forEach(function (s) {
       s.classList.add('tap-mode');
     });
   }
   document.querySelectorAll('video[data-scene]').forEach(function (v) {
     v.addEventListener('click', function () {
       load(v);
-      var box = v.closest('.scene, .hero-media, .char-panel');
+      var box = v.closest('.scene, .hero-media, .showcase-pin');
       if (v.paused) {
         var pr = v.play(); if (pr && pr.catch) pr.catch(function () {});
         if (box) box.classList.remove('tap-mode');
       } else { v.pause(); }
     });
   });
+  // Tam ekran vitrinde videoya tıklama alanı perdenin altında kalıyor —
+  // rozete/perdeye tıklayınca da aktif video oynasın/dursun.
+  var pinBox = document.querySelector('.showcase-pin');
+  if (pinBox) {
+    pinBox.addEventListener('click', function (e) {
+      if (e.target.closest('.rail-item') || e.target.closest('.panel-copy')) return;
+      var act = document.querySelector('.char-panel.is-active video');
+      if (!act) return;
+      load(act);
+      if (act.paused) {
+        var pr = act.play(); if (pr && pr.catch) pr.catch(function () {});
+        pinBox.classList.remove('tap-mode');
+      } else { act.pause(); }
+    });
+  }
 })();
