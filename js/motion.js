@@ -15,35 +15,8 @@
 
   gsap.registerPlugin(ScrollTrigger);
 
-  /* ---------- Hero başlığı: kelime kelime ----------
-     immediateRender:false → tween ilk tick'e kadar başlangıç
-     durumunu render ETMEZ; ticker hiç çalışmazsa başlık görünür kalır. */
-  var heroTitle = document.querySelector('.hero-title');
-  if (heroTitle && !heroTitle.dataset.split) {
-    heroTitle.dataset.split = '1';
-    var parts = heroTitle.innerHTML.split(/(<br\s*\/?>)/i);
-    var out = '';
-    parts.forEach(function (part) {
-      if (/<br/i.test(part)) { out += part; return; }
-      part.split(/(\s+)/).forEach(function (tok) {
-        out += tok.trim() === '' ? tok : '<span class="w" style="display:inline-block">' + tok + '</span>';
-      });
-    });
-    heroTitle.innerHTML = out;
-    gsap.from(heroTitle.querySelectorAll('.w'), {
-      yPercent: 110, opacity: 0, duration: .9, ease: 'power3.out',
-      stagger: .08, delay: .1, immediateRender: false
-    });
-  }
-
-  /* ---------- Hero: kicker / alt metin / cta ---------- */
-  var heroBits = document.querySelectorAll('.hero .kicker, .hero-sub, .hero-cta');
-  if (heroBits.length) {
-    gsap.from(heroBits, {
-      y: 18, opacity: 0, duration: .8, ease: 'power2.out',
-      stagger: .12, delay: .5, immediateRender: false
-    });
-  }
+  /* Hero giriş animasyonu artık CSS'te (base/pages.css @keyframes heroRise):
+     fill-mode:both ile bitiş durumu kalıcı — ticker dursa bile başlık görünür. */
 
   /* ---------- Hero medya: hafif paralaks (yalnızca transform) ---------- */
   var heroMedia = document.querySelector('.hero-media');

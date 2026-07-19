@@ -39,7 +39,7 @@
 .scene-copy{max-width:34ch}
 .scene-kicker{font-size:var(--step-0);letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--k);margin:0 0 .7em}
 .scene-motto{font-family:var(--font-serif);font-size:var(--step-4);line-height:1.2;color:var(--ink);margin:0 0 .5em}
-.scene-desc{color:var(--muted);font-size:1.02rem;margin:0 0 1.4em}
+.scene-desc{color:var(--muted);font-size:var(--step-1);margin:0 0 1.4em}
 .scene-cta{background:var(--k);color:#fff}
 .scene-cta:hover{filter:brightness(1.05)}
 
@@ -118,15 +118,15 @@
 }
 .rail-item{
   appearance:none;border:0;background:none;cursor:pointer;text-align:left;
-  font-family:var(--font-sans);padding:.5rem .1rem;
-  display:flex;align-items:baseline;gap:.45rem;
+  font-family:var(--font-sans);padding:.62rem .1rem;min-height:44px;
+  display:flex;align-items:center;gap:.45rem;
   opacity:.44;transition:opacity .3s var(--ease),transform .3s var(--ease);
 }
 .rail-item:hover{opacity:.78}
 .rail-item.is-active{opacity:1;transform:translateX(3px)}
-.rail-no{font-size:.62rem;font-weight:800;letter-spacing:.1em;color:var(--muted)}
+.rail-no{font-size:var(--step--1);font-weight:800;letter-spacing:.1em;color:var(--muted)}
 .rail-item.is-active .rail-no{color:var(--k)}
-.rail-name{font-family:var(--font-sans);font-size:.86rem;font-weight:700;
+.rail-name{font-family:var(--font-sans);font-size:var(--step-0);font-weight:700;
   letter-spacing:.01em;color:var(--ink);line-height:1.2;white-space:nowrap}
 .rail-unvan{display:none}          /* daraltıldı: unvan gizli */
 .rail-item:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:5px}
@@ -142,7 +142,7 @@
   font-weight:800;color:var(--k);margin:0 0 .7em}
 .panel-motto{font-family:var(--font-serif);font-size:clamp(2rem,3.6vw,3.2rem);line-height:1.1;
   color:var(--ink);margin:0 0 .5em}
-.panel-desc{color:var(--ink-soft);font-size:1.05rem;line-height:1.65;margin:0 0 1.6em}
+.panel-desc{color:var(--ink-soft);font-size:var(--step-1);line-height:1.65;margin:0 0 1.6em}
 .panel-cta{background:var(--k);color:#fff;box-shadow:var(--shadow-soft)}
 .panel-cta:hover{filter:brightness(1.06)}
 
@@ -169,7 +169,7 @@
     border-radius:var(--radius-pill);opacity:.65;background:#fff;min-height:40px;align-items:center}
   .rail-item.is-active{opacity:1;transform:none;border-color:var(--k);background:var(--k)}
   .rail-item.is-active .rail-name,.rail-item.is-active .rail-no{color:#fff}
-  .rail-name{font-size:.9rem}
+  .rail-name{font-size:var(--step-0)}
 
   .showcase-stage{order:2;position:relative;inset:auto;
     aspect-ratio:4/5;max-height:60svh;margin:var(--space-3) var(--space-3) 0;
@@ -180,7 +180,7 @@
 
   .panel-copy{order:3;max-width:none;padding:var(--space-3) var(--space-3) var(--space-5)}
   .panel-motto{font-size:clamp(1.55rem,6vw,2.1rem)}
-  .panel-desc{font-size:.98rem}
+  .panel-desc{font-size:var(--step-1)}
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -212,15 +212,15 @@
 .ses-copy p{color:var(--muted)}
 .ses-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow-card);padding:var(--space-4);text-align:center}
 .ses-count{font-family:var(--font-serif);font-size:clamp(3rem,9vw,4.6rem);font-weight:700;color:var(--active-accent);line-height:1;display:block}
-.ses-count-label{color:var(--muted);font-size:.9rem;letter-spacing:.06em}
+.ses-count-label{color:var(--muted);font-size:var(--step-0);letter-spacing:.06em}
 .ses-bar-wrap{height:10px;border-radius:var(--radius-pill);background:var(--bg-soft);overflow:hidden;margin:var(--space-3) 0 .6em}
 .ses-bar{height:100%;width:0;background:var(--active-accent);border-radius:inherit;transition:width .6s var(--ease)}
-.ses-meta{display:flex;justify-content:space-between;font-size:.8rem;color:var(--muted)}
-.ses-share{margin-top:var(--space-3)}
+.ses-meta{display:flex;justify-content:space-between;font-size:var(--step-0);color:var(--muted)}
+.ses-share{margin-top:var(--space-3);width:100%;justify-content:center}
 .ses-toast{
   position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);
   background:var(--ink);color:#fff;padding:.7em 1.2em;border-radius:var(--radius-pill);
-  font-size:.9rem;display:inline-flex;align-items:center;gap:.5em;
+  font-size:var(--step-0);display:inline-flex;align-items:center;gap:.5em;
   opacity:0;pointer-events:none;transition:opacity .3s,transform .3s var(--ease);z-index:200;
 }
 .ses-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
@@ -236,7 +236,7 @@
 
 /* ---------- Form (Kurumsal) ---------- */
 .form-field{margin-bottom:var(--space-3)}
-.form-field label{display:block;font-size:.85rem;font-weight:700;color:var(--ink-soft);margin-bottom:.35em}
+.form-field label{display:block;font-size:var(--step-0);font-weight:700;color:var(--ink-soft);margin-bottom:.35em}
 .form-field input,.form-field select,.form-field textarea{
   width:100%;padding:.8em 1em;border:1px solid var(--line);border-radius:var(--radius-sm);
   background:var(--white);font-family:inherit;font-size:1rem;color:var(--ink);
@@ -255,7 +255,7 @@
 .tabs-nav{display:flex;gap:.4em;border-bottom:1px solid var(--line);margin-bottom:var(--space-3);flex-wrap:wrap}
 .tab-btn{
   appearance:none;border:0;background:none;cursor:pointer;
-  font-family:var(--font-sans);font-size:.98rem;font-weight:700;color:var(--muted);
+  font-family:var(--font-sans);font-size:var(--step-1);font-weight:700;color:var(--muted);
   padding:.7em 1em;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .2s,border-color .2s;
 }
 .tab-btn[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--k,var(--accent))}

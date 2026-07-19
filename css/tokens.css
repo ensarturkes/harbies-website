@@ -23,7 +23,8 @@
   /* Tipografi */
   --font-serif:"Newsreader",Georgia,"Times New Roman",serif;
   --font-sans:"Nunito Sans",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
-  --step-0:.8125rem;
+  --step--1:.8rem;
+  --step-0:.875rem;
   --step-1:1rem;
   --step-2:1.25rem;
   --step-3:1.6rem;
