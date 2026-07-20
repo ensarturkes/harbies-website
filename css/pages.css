@@ -86,17 +86,110 @@
 .char-buy .btn{width:100%;justify-content:center}
 @media (max-width:760px){.char-grid{grid-template-columns:1fr;gap:var(--space-4)}}
 
-/* ---------- Hikayemiz ---------- */
-.page-head{text-align:center;padding-block:var(--space-6) var(--space-4);max-width:60ch;margin-inline:auto}
-.prose{max-width:70ch;margin-inline:auto}
-.prose p{color:var(--ink-soft)}
-.quote-block{font-family:var(--font-serif);font-size:var(--step-3);line-height:1.4;
-  color:var(--ink);border-left:3px solid var(--accent);padding-left:var(--space-3);margin:var(--space-4) 0}
-.values-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-3);margin-top:var(--space-4)}
-.value-card{background:var(--bg-tint);border:1px solid var(--line);border-radius:var(--radius);padding:var(--space-3)}
-.value-card h3{font-size:var(--step-2);margin-bottom:.3em}
-.value-card p{color:var(--muted);font-size:var(--step-1);margin:0}
-@media (max-width:640px){.values-grid{grid-template-columns:1fr}}
+/* ---------- İç sayfa: editoryal giriş ---------- */
+.page-hero{
+  display:grid;grid-template-columns:1.05fr .95fr;gap:var(--space-5);
+  align-items:center;padding-block:var(--space-5);
+}
+.page-hero-copy{max-width:46ch}
+.page-hero h1{font-size:clamp(2.3rem,4.4vw,3.7rem);line-height:1.06;letter-spacing:-.015em;margin-bottom:.45em}
+.page-hero-lead{font-size:var(--step-2);line-height:1.6;color:var(--ink-soft);margin:0}
+.page-hero-media{
+  position:relative;border-radius:var(--radius);overflow:hidden;
+  box-shadow:var(--shadow-card);aspect-ratio:4/3;
+}
+.page-hero-media img{width:100%;height:100%;object-fit:cover}
+/* köşede iplik rengi şeridi — sayfayı markaya bağlar */
+.page-hero-media::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:6px;
+  background:linear-gradient(90deg,var(--k-muhendis),var(--k-futbolcu),var(--k-berber),var(--k-itfaiyeci));
+}
+@media (max-width:860px){
+  .page-hero{grid-template-columns:1fr;gap:var(--space-3);padding-block:var(--space-4)}
+  .page-hero-media{aspect-ratio:16/10}
+}
+
+/* ---------- İç sayfa: etiketli metin bloğu ---------- */
+.story{display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr);gap:var(--space-4);align-items:start}
+.story-label{
+  position:sticky;top:calc(var(--nav-h) + 24px);
+  font-size:var(--step-0);letter-spacing:.16em;text-transform:uppercase;
+  font-weight:800;color:var(--muted);margin:0;
+}
+.story-label::after{content:"";display:block;width:34px;height:2px;background:var(--accent);margin-top:.7em}
+.story-body{max-width:62ch}
+.story-body p{color:var(--ink-soft);font-size:var(--step-2);line-height:1.72}
+.story-body p:last-child{margin-bottom:0}
+@media (max-width:860px){
+  .story{grid-template-columns:1fr;gap:var(--space-2)}
+  .story-label{position:static}
+}
+
+/* ---------- Vizyon & Misyon şeridi ---------- */
+.vm-band{
+  background:var(--bg-soft);border-block:1px solid var(--line);
+  padding-block:var(--space-5);margin-block:var(--space-5);
+}
+.vm-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4) var(--space-5)}
+.vm-item{border-left:3px solid var(--k,var(--accent));padding-left:var(--space-3)}
+.vm-item h2{
+  font-family:var(--font-sans);font-size:var(--step-0);font-weight:800;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:.9em;
+}
+.vm-item p{font-family:var(--font-serif);font-size:var(--step-3);line-height:1.45;color:var(--ink);margin:0}
+@media (max-width:860px){.vm-grid{grid-template-columns:1fr;gap:var(--space-4)}}
+
+/* ---------- Numaralı kart ızgarası (değerler / hizmetler) ---------- */
+.card-grid{display:grid;gap:var(--space-3);margin-top:var(--space-4)}
+.card-grid--2{grid-template-columns:repeat(2,1fr)}
+.card-grid--4{grid-template-columns:repeat(4,1fr)}
+.num-card{
+  position:relative;overflow:hidden;
+  background:var(--bg-tint);border:1px solid var(--line);border-radius:var(--radius);
+  padding:calc(var(--space-3) + 6px) var(--space-3) var(--space-3);
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease);
+}
+.num-card::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--k,var(--accent))}
+.num-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-soft);border-color:var(--k,var(--accent))}
+.num-card .num{
+  display:block;font-size:var(--step-0);font-weight:800;letter-spacing:.14em;
+  color:var(--k,var(--accent));margin-bottom:.5em;
+}
+.num-card h3{font-size:var(--step-2);margin-bottom:.35em}
+.num-card p{color:var(--muted);font-size:var(--step-1);margin:0;line-height:1.6}
+@media (max-width:960px){.card-grid--4{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){.card-grid--2,.card-grid--4{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.num-card:hover{transform:none}}
+
+/* ---------- Alıntı şeridi (tam genişlik) ---------- */
+.pull-quote{
+  position:relative;padding-block:var(--space-6);margin-block:var(--space-5);
+  text-align:center;overflow:hidden;background:var(--bg-tint);
+}
+.pull-quote blockquote{
+  margin:0 auto;max-width:24ch;font-family:var(--font-serif);
+  font-size:clamp(2rem,4.4vw,3.4rem);line-height:1.12;color:var(--ink);
+}
+.pull-quote cite{
+  display:block;margin-top:1.2em;font-style:normal;
+  font-size:var(--step-0);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+}
+
+/* ---------- Kurumsal: iki sütunlu form düzeni ---------- */
+.corp-layout{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:var(--space-5);align-items:start}
+.corp-aside{position:sticky;top:calc(var(--nav-h) + 28px)}
+.corp-aside h2{font-size:var(--step-3)}
+.corp-aside p{color:var(--muted);font-size:var(--step-1)}
+.corp-points{list-style:none;margin:var(--space-3) 0 0;padding:0;display:grid;gap:.8em}
+.corp-points li{position:relative;padding-left:1.7em;color:var(--ink-soft);font-size:var(--step-1)}
+.corp-points li::before{
+  content:"";position:absolute;left:0;top:.55em;width:9px;height:9px;border-radius:50%;
+  background:var(--accent);
+}
+@media (max-width:960px){
+  .corp-layout{grid-template-columns:1fr;gap:var(--space-4)}
+  .corp-aside{position:static}
+}
 
 /* ---------- Kurumsal ---------- */
 .corp-form-wrap{max-width:720px;margin:var(--space-5) auto 0;background:var(--white);
